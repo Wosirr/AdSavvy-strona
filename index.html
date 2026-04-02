@@ -271,10 +271,10 @@
     .service-card.lead { background-color: var(--lead-generation); }
     .service-card.ecom { background-color: var(--e-commerce); }
     .service-card.search { background-color: var(--search-arbitrage); }
-    .service-card.web { background: linear-gradient(135deg, #1a2a0a 0%, #0f1f06 100%); border: 1px solid rgba(200,236,133,0.15); }
+    .service-card.web { background: #c8ec85; border: none; }
     .service-card.web .card-label,
-    .service-card.web .card-title { color: #c8ec85; }
-    .service-card.web .card-desc { color: rgba(200,236,133,0.65); }
+    .service-card.web .card-title { color: #0f1f06; }
+    .service-card.web .card-desc { color: rgba(0,0,0,0.55); }
 
     .service-card .card-label {
       font-size: 0.7rem;
@@ -320,7 +320,10 @@
       justify-content: center;
       align-self: flex-end;
       margin-top: 2rem;
+      text-decoration: none;
+      transition: transform 0.2s, opacity 0.2s;
     }
+    .card-arrow:hover { transform: scale(1.12); opacity: 0.85; }
 
     .card-arrow svg { width: 16px; height: 16px; }
 
@@ -1734,9 +1737,9 @@
           <h3 class="card-title">Wypełnij lejek kwalifikowanymi leadami</h3>
           <p class="card-desc">Budujemy i zarządzamy wysokokonwertującymi lejkami na Meta, Google i TikToku, które dostarczają prospektów gotowych do zakupu.</p>
         </div>
-        <div class="card-arrow" style="background:rgba(255,255,255,0.15);">
+        <a href="#contact" class="card-arrow" style="background:rgba(255,255,255,0.15);">
           <svg viewBox="0 0 16 16" fill="none"><path d="M1 8h14M8 1l7 7-7 7" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
+        </a>
       </div>
 
       <!-- E-Commerce -->
@@ -1746,9 +1749,9 @@
           <h3 class="card-title">Skaluj swój sklep z płatnym ruchem</h3>
           <p class="card-desc">Od DTC po dominację na marketplace'ach — optymalizujemy cały Twój paid acquisition stack, by generować wzrost przychodów miesiąc po miesiącu.</p>
         </div>
-        <div class="card-arrow" style="background:rgba(0,0,0,0.1);">
+        <a href="#contact" class="card-arrow" style="background:rgba(0,0,0,0.1);">
           <svg viewBox="0 0 16 16" fill="none"><path d="M1 8h14M8 1l7 7-7 7" stroke="rgba(0,0,0,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
+        </a>
       </div>
 
       <!-- Search Arbitrage -->
@@ -1758,9 +1761,9 @@
           <h3 class="card-title">Monetyzuj intencyjny ruch w sieci</h3>
           <p class="card-desc">Zamieniamy ruch o wysokiej intencji zakupowej w przewidywalne strumienie przychodów dzięki programatycznym strategiom arbitrażu optymalizowanym każdego dnia.</p>
         </div>
-        <div class="card-arrow" style="background:rgba(255,255,255,0.1);">
+        <a href="#contact" class="card-arrow" style="background:rgba(255,255,255,0.1);">
           <svg viewBox="0 0 16 16" fill="none"><path d="M1 8h14M8 1l7 7-7 7" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
+        </a>
       </div>
 
       <!-- Web Design -->
@@ -1770,9 +1773,9 @@
           <h3 class="card-title">Strona, która sprzedaje 24/7</h3>
           <p class="card-desc">Projektujemy i wdrażamy szybkie, nowoczesne strony oraz landing page'e zoptymalizowane pod konwersję — gotowe do skalowania kampaniami.</p>
         </div>
-        <div class="card-arrow" style="background:rgba(200,236,133,0.15);">
-          <svg viewBox="0 0 16 16" fill="none"><path d="M1 8h14M8 1l7 7-7 7" stroke="#c8ec85" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
+        <a href="#contact" class="card-arrow" style="background:rgba(0,0,0,0.1);">
+          <svg viewBox="0 0 16 16" fill="none"><path d="M1 8h14M8 1l7 7-7 7" stroke="rgba(0,0,0,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </div>
 
     </div>
