@@ -1551,9 +1551,44 @@
       transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1);
     }
     .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-d1 { transition-delay: 0.1s; }
-    .reveal-d2 { transition-delay: 0.2s; }
-    .reveal-d3 { transition-delay: 0.3s; }
+
+    /* Slide from left */
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-36px);
+      transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+    /* Slide from right */
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(36px);
+      transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* Scale in */
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.88) translateY(18px);
+      transition: opacity 0.55s cubic-bezier(0.16,1,0.3,1), transform 0.55s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal-scale.visible { opacity: 1; transform: scale(1) translateY(0); }
+
+    /* Pop (spring bounce) */
+    .reveal-pop {
+      opacity: 0;
+      transform: translateY(22px) scale(0.9);
+      transition: opacity 0.5s cubic-bezier(0.34,1.56,0.64,1), transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .reveal-pop.visible { opacity: 1; transform: translateY(0) scale(1); }
+
+    .reveal-d1 { transition-delay: 0.08s; }
+    .reveal-d2 { transition-delay: 0.16s; }
+    .reveal-d3 { transition-delay: 0.24s; }
+    .reveal-d4 { transition-delay: 0.32s; }
+    .reveal-d5 { transition-delay: 0.40s; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
@@ -1794,9 +1829,9 @@
   <section class="results-section">
     <div class="results-inner">
       <p class="section-label reveal" style="text-align:center;margin-bottom:1rem;">Realne wyniki naszych kampanii</p>
-      <div class="results-grid reveal reveal-d1">
+      <div class="results-grid">
 
-        <div class="result-card">
+        <div class="result-card reveal-pop">
           <span class="result-icon" style="background:rgba(13,229,230,0.1);color:var(--brand-teal);">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 17l4-8 4 4 4-6 4 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
@@ -1806,7 +1841,7 @@
           </div>
         </div>
 
-        <div class="result-card">
+        <div class="result-card reveal-pop reveal-d1">
           <span class="result-icon" style="background:rgba(230,0,110,0.1);color:#ff4da6;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
@@ -1816,7 +1851,7 @@
           </div>
         </div>
 
-        <div class="result-card">
+        <div class="result-card reveal-pop reveal-d2">
           <span class="result-icon" style="background:rgba(200,236,133,0.1);color:#c8ec85;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
           </span>
@@ -1826,7 +1861,7 @@
           </div>
         </div>
 
-        <div class="result-card">
+        <div class="result-card reveal-pop reveal-d3">
           <span class="result-icon" style="background:rgba(0,26,102,0.2);color:#7da0ff;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M16 7V5a2 2 0 0 0-4 0v2M8 7V5a2 2 0 0 0-4 0v2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
           </span>
@@ -1848,39 +1883,39 @@
         <p class="section-label reveal">Nasze narzędzia</p>
         <h2 class="reveal reveal-d1">Działamy tam, gdzie<br>są <em>Twoi klienci.</em></h2>
       </div>
-      <div class="platforms-grid reveal reveal-d1">
+      <div class="platforms-grid">
 
-        <div class="platform-card">
+        <div class="platform-card reveal-scale">
           <div class="platform-tag social">Paid Social</div>
           <div class="platform-name">Meta Ads</div>
           <div class="platform-desc">Kampanie na Facebook i Instagram z precyzyjnym targetowaniem, retargetingiem i optymalizacją konwersji w lejku.</div>
         </div>
 
-        <div class="platform-card">
+        <div class="platform-card reveal-scale reveal-d1">
           <div class="platform-tag search">Search</div>
           <div class="platform-name">Google Ads</div>
           <div class="platform-desc">Reklamy search, Performance Max i display docierające do użytkowników z wysoką intencją zakupową w odpowiednim momencie.</div>
         </div>
 
-        <div class="platform-card">
+        <div class="platform-card reveal-scale reveal-d2">
           <div class="platform-tag social">Paid Social</div>
           <div class="platform-name">TikTok Ads</div>
           <div class="platform-desc">Natywne kampanie wideo docierające do młodszych grup odbiorców z wysokim zasięgiem i niskim kosztem dotarcia.</div>
         </div>
 
-        <div class="platform-card">
+        <div class="platform-card reveal-scale reveal-d1">
           <div class="platform-tag ecom">E-Commerce</div>
           <div class="platform-name">Shopify / WooCommerce</div>
           <div class="platform-desc">Pełna obsługa kampanii produktowych, integracja z feed'ami i optymalizacja konwersji dla sklepów internetowych.</div>
         </div>
 
-        <div class="platform-card">
+        <div class="platform-card reveal-scale reveal-d2">
           <div class="platform-tag arbitrage">Arbitrage</div>
           <div class="platform-name">Search Arbitrage</div>
           <div class="platform-desc">Programatyczne strategie arbitrażu na sieci Yahoo, Bing i partnerów — zamieniamy tani ruch w przewidywalne przychody.</div>
         </div>
 
-        <div class="platform-card">
+        <div class="platform-card reveal-scale reveal-d3">
           <div class="platform-tag search">Analytics</div>
           <div class="platform-name">Tracking & Analytics</div>
           <div class="platform-desc">Konfiguracja GA4, Meta Pixel, event tracking i modeli atrybucji — pełna widoczność danych, zero zgadywania.</div>
@@ -1892,10 +1927,10 @@
 
   <!-- ── PROCESS (VERTICAL TABS) ── -->
   <section class="process-section">
-    <div class="process-inner reveal">
+    <div class="process-inner">
 
       <!-- Left: tabs -->
-      <div class="process-left">
+      <div class="process-left reveal-left">
         <p class="section-label">Jak działamy</p>
         <h2>Prosty proces.<br><em>Mierzalne efekty.</em></h2>
 
@@ -1949,7 +1984,7 @@
       </div>
 
       <!-- Right: images -->
-      <div class="process-right" id="vtab-gallery">
+      <div class="process-right reveal-right" id="vtab-gallery">
 
         <img class="process-img-slide active" data-index="0"
           src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200"
@@ -2082,7 +2117,7 @@
     </div>
     <div class="faq-list">
 
-      <div class="faq-item">
+      <div class="faq-item reveal-left">
         <button class="faq-question" onclick="toggleFaq(this)">
           W jakich kanałach się specjalizujecie?
           <span class="faq-icon">+</span>
@@ -2092,7 +2127,7 @@
         </div>
       </div>
 
-      <div class="faq-item">
+      <div class="faq-item reveal-left reveal-d1">
         <button class="faq-question" onclick="toggleFaq(this)">
           Jak szybko mogę spodziewać się wyników?
           <span class="faq-icon">+</span>
@@ -2102,7 +2137,7 @@
         </div>
       </div>
 
-      <div class="faq-item">
+      <div class="faq-item reveal-left reveal-d2">
         <button class="faq-question" onclick="toggleFaq(this)">
           Jaki jest minimalny budżet reklamowy?
           <span class="faq-icon">+</span>
@@ -2112,7 +2147,7 @@
         </div>
       </div>
 
-      <div class="faq-item">
+      <div class="faq-item reveal-left reveal-d3">
         <button class="faq-question" onclick="toggleFaq(this)">
           Czy oferujecie rozliczenie za wyniki?
           <span class="faq-icon">+</span>
@@ -2122,7 +2157,7 @@
         </div>
       </div>
 
-      <div class="faq-item">
+      <div class="faq-item reveal-left reveal-d4">
         <button class="faq-question" onclick="toggleFaq(this)">
           Jak zacząć współpracę?
           <span class="faq-icon">+</span>
@@ -2208,7 +2243,7 @@
 
   <script>
     // Scroll reveal
-    const reveals = document.querySelectorAll('.reveal');
+    const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-pop');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
