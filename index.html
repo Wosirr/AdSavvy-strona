@@ -2561,26 +2561,41 @@
       const btn = document.getElementById('cf-submit');
       if (!form) return;
 
-      form.addEventListener('submit', function(e) {
+      const WEB3FORMS_KEY = '700ee498-94f3-40a6-ac1b-5f9147f8decd';
+
+      form.addEventListener('submit', async function(e) {
         e.preventDefault();
         btn.disabled = true;
         btn.querySelector('span').textContent = 'Wysyłanie…';
 
-        // Build mailto link as fallback (no backend)
-        const name    = document.getElementById('cf-name').value;
-        const email   = document.getElementById('cf-email').value;
-        const company = document.getElementById('cf-company').value;
-        const message = document.getElementById('cf-message').value;
-        const body = encodeURIComponent(
-          'Imię: ' + name + '\nFirma: ' + company + '\nEmail: ' + email + '\n\n' + message
-        );
-        window.location.href = 'mailto:adsavvy.kontakt@gmail.com?subject=Zapytanie+ze+strony&body=' + body;
+        const data = {
+          access_key: WEB3FORMS_KEY,
+          subject: 'Zapytanie ze strony AdSavvy',
+          from_name: document.getElementById('cf-name').value,
+          email: document.getElementById('cf-email').value,
+          'Firma / Budżet': document.getElementById('cf-company').value,
+          message: document.getElementById('cf-message').value,
+        };
 
-        // Show success state after short delay
-        setTimeout(function() {
-          form.style.display = 'none';
-          success.style.display = 'flex';
-        }, 600);
+        try {
+          const res = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(data),
+          });
+          const json = await res.json();
+
+          if (json.success) {
+            form.style.display = 'none';
+            success.style.display = 'flex';
+          } else {
+            throw new Error(json.message);
+          }
+        } catch(err) {
+          btn.disabled = false;
+          btn.querySelector('span').textContent = 'Wyślij wiadomość';
+          alert('Błąd wysyłania. Napisz bezpośrednio na adsavvy.kontakt@gmail.com');
+        }
       });
     })();
 
