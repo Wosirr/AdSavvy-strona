@@ -412,6 +412,91 @@
       .results-grid { grid-template-columns: 1fr; }
     }
 
+    /* ── TESTIMONIAL ── */
+    .testimonial-section {
+      background: var(--bg-dark);
+      padding: 0 4rem 5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .testimonial-card {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 2.5rem 3rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 1.5rem;
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: '\201C';
+      position: absolute;
+      top: -0.5rem;
+      left: 2.5rem;
+      font-size: 5rem;
+      line-height: 1;
+      color: var(--brand-teal);
+      opacity: 0.25;
+      font-family: Georgia, serif;
+    }
+
+    .testimonial-stars {
+      display: flex;
+      gap: 0.2rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .testimonial-stars span {
+      color: #f5c518;
+      font-size: 1rem;
+    }
+
+    .testimonial-text {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--body-text--d-bg);
+      margin-bottom: 1.75rem;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .testimonial-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--brand-teal) 0%, #006b6c 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--bg-dark);
+      flex-shrink: 0;
+    }
+
+    .testimonial-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .testimonial-role {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
+      margin-top: 0.1rem;
+    }
+
+    @media (max-width: 900px) {
+      .testimonial-section { padding: 0 2rem 4rem; }
+      .testimonial-card { padding: 2rem 1.75rem; }
+    }
+
     /* ── PLATFORMS ── */
     .platforms {
       background: #111214;
@@ -1624,6 +1709,7 @@
     <ul class="nav-links">
       <li><a href="#services">Usługi</a></li>
       <li><a href="#platforms">Platformy</a></li>
+      <li><a href="#results">Wyniki</a></li>
       <li><a href="#why-us">Dlaczego my</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#contact" class="nav-cta"><span>Zacznij teraz</span></a></li>
@@ -1826,9 +1912,10 @@
   </section>
 
   <!-- ── RESULTS TICKER ── -->
-  <section class="results-section">
+  <section class="results-section" id="results">
     <div class="results-inner">
-      <p class="section-label reveal" style="text-align:center;margin-bottom:1rem;">Realne wyniki naszych kampanii</p>
+      <p class="section-label reveal" style="text-align:center;margin-bottom:0.5rem;">Realne wyniki naszych kampanii</p>
+      <p class="reveal" style="text-align:center;font-size:0.8rem;color:rgba(255,255,255,0.35);margin-bottom:1.25rem;letter-spacing:0.01em;">Sklep ze sprzętem sportowym · Google Ads · Q1 2026</p>
       <div class="results-grid">
 
         <div class="result-card reveal-pop">
@@ -1872,7 +1959,30 @@
         </div>
 
       </div>
-      <p class="results-source reveal reveal-d2">Dane z panelu Google Ads — rzeczywista kampania klienta e-commerce</p>
+      <p class="results-source reveal reveal-d2">Dane z panelu Google Ads — rzeczywista kampania sklepu ze sprzętem sportowym</p>
+      <div style="display:flex;justify-content:center;margin-top:2rem;">
+        <a href="#contact" class="btn-primary reveal reveal-d3">
+          <span>Chcę takich wyników</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5L13 7l-5.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TESTIMONIAL ── -->
+  <section class="testimonial-section">
+    <div class="testimonial-card reveal">
+      <div class="testimonial-stars">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      </div>
+      <p class="testimonial-text">„Przed współpracą z AdSavvy nasze kampanie Google Ads generowały ROAS na poziomie 2,1x — inwestowaliśmy coraz więcej bez realnego efektu. W ciągu pierwszych 90 dni zespół przepisał strukturę kampanii od zera, wdrożył feed produktowy i zoptymalizował atrybucję. Wyniki przerosły nasze oczekiwania: ROAS wzrósł do prawie 8x, a koszt pozyskania zamówienia spadł o ponad połowę. Teraz skalujemy budżet z pełnym spokojem."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">★</div>
+        <div>
+          <p class="testimonial-name">Właściciel sklepu</p>
+          <p class="testimonial-role">Sklep ze sprzętem sportowym · zweryfikowany klient AdSavvy</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1921,6 +2031,12 @@
           <div class="platform-desc">Konfiguracja GA4, Meta Pixel, event tracking i modeli atrybucji — pełna widoczność danych, zero zgadywania.</div>
         </div>
 
+      </div>
+      <div style="display:flex;justify-content:center;margin-top:2.5rem;">
+        <a href="#contact" class="btn-primary reveal">
+          <span>Zacznij kampanię</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5L13 7l-5.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </div>
     </div>
   </section>
@@ -1981,6 +2097,10 @@
           </button>
 
         </div>
+        <a href="#contact" class="btn-primary" style="margin-top:2rem;width:fit-content;">
+          <span>Rozpocznij współpracę</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5L13 7l-5.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </div>
 
       <!-- Right: images -->
@@ -2045,6 +2165,12 @@
         </div>
 
       </div>
+      <div style="display:flex;justify-content:center;margin-top:2.5rem;">
+        <a href="#contact" class="btn-primary reveal">
+          <span>Sprawdź, ile tracisz bez nas</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5L13 7l-5.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -2096,6 +2222,10 @@
       <div style="max-width:800px;">
         <p class="section-label" style="color:var(--secondary-text--d-bg);margin-bottom:1rem;">Przesuń kursor</p>
         <h2>Czy Twój budżet reklamowy<br>naprawdę pracuje<br><em>na Ciebie?</em></h2>
+        <a href="#contact" class="btn-primary" style="margin-top:2rem;width:fit-content;">
+          <span>Dowiedz się za darmo</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5L13 7l-5.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </div>
     </div>
 
@@ -2104,6 +2234,10 @@
       <div class="mask-overlay-content" id="mask-trigger">
         <p class="section-label">Z AdSavvy</p>
         <h2>Każda złotówka wraca<br>z procentem.<br><em>Gwarantujemy.</em></h2>
+        <a href="#contact" class="btn-primary" style="margin-top:2rem;width:fit-content;background:var(--bg-dark);color:var(--white);">
+          <span>Dowiedz się za darmo</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5L13 7l-5.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </div>
     </div>
 
@@ -2167,6 +2301,12 @@
         </div>
       </div>
 
+    </div>
+    <div style="display:flex;justify-content:center;margin-top:2.5rem;">
+      <a href="#contact" class="btn-primary reveal">
+        <span>Umów bezpłatną konsultację</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5L13 7l-5.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
     </div>
   </section>
 
@@ -2318,7 +2458,7 @@
         scrollTrigger: {
           trigger: section,
           start: 'top top',
-          end: '+=3000',
+          end: '+=2000',
           pin: true,
           scrub: 1,
           anticipatePin: 1,
