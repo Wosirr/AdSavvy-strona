@@ -1180,6 +1180,12 @@
       will-change: transform, filter, opacity;
     }
 
+    .text-mobile { display: none; }
+    @media (max-width: 600px) {
+      .text-desktop { display: none; }
+      .text-mobile  { display: inline; }
+    }
+
     .text-track {
       font-size: clamp(2.75rem, 6vw, 6rem);
       font-weight: 700; letter-spacing: -0.03em;
@@ -1816,7 +1822,10 @@
 
     <!-- Background text layer (animates in on load, fades as card rises) -->
     <div class="hero-text-wrapper">
-      <h1 class="text-track">Budżet to narzędzie. Zysk to cel.</h1>
+      <h1 class="text-track">
+        <span class="text-desktop">Budżet to narzędzie. Zysk to cel.</span>
+        <span class="text-mobile">Liczą się wyniki.</span>
+      </h1>
       <h1 class="text-days">Savvy?</h1>
     </div>
 
