@@ -1188,6 +1188,11 @@
       visibility: hidden;
     }
 
+    @media (max-width: 600px) {
+      .text-track { font-size: clamp(1.6rem, 7vw, 2.2rem); }
+      .text-days  { font-size: clamp(3rem, 18vw, 5rem); }
+    }
+
     .text-days {
       font-size: clamp(4rem, 10vw, 10rem);
       font-weight: 800; letter-spacing: -0.04em; line-height: 1.1;
