@@ -1191,7 +1191,7 @@
     .text-days {
       font-size: clamp(4rem, 10vw, 10rem);
       font-weight: 800; letter-spacing: -0.04em; line-height: 1.1;
-      background: linear-gradient(180deg, #fff 0%, #E6006E 100%);
+      background: linear-gradient(90deg, #E6006E 0%, #0DE5E6 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text; transform: translateZ(0);
       visibility: hidden;
@@ -1693,8 +1693,82 @@
       .footer-inner { flex-direction: column; gap: 1.5rem; text-align: center; }
     }
 
+    /* ── HAMBURGER ── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      z-index: 101;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), opacity 0.2s;
+      transform-origin: center;
+    }
+
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile drawer */
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 99;
+      background: var(--bg-dark);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 5.5rem 2rem 2rem;
+      flex-direction: column;
+      gap: 0;
+      transform: translateY(-100%);
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    .nav-mobile.open { transform: translateY(0); }
+
+    .nav-mobile li {
+      list-style: none;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-mobile li:last-child { border-bottom: none; margin-top: 1.25rem; }
+
+    .nav-mobile a {
+      display: block;
+      padding: 1rem 0;
+      color: var(--secondary-text--d-bg);
+      text-decoration: none;
+      font-size: 1.05rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-mobile a:hover { color: var(--white); }
+
+    .nav-mobile .nav-cta {
+      display: block;
+      text-align: center;
+      padding: 0.85rem 1.5rem;
+    }
+
     @media (max-width: 600px) {
       .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-mobile { display: flex; }
+      nav { padding: 1rem 1.5rem; }
     }
   </style>
 </head>
@@ -1714,7 +1788,22 @@
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#contact" class="nav-cta"><span>Zacznij teraz</span></a></li>
     </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </nav>
+
+  <!-- Mobile nav drawer -->
+  <ul class="nav-mobile" id="nav-mobile">
+    <li><a href="#services">Usługi</a></li>
+    <li><a href="#platforms">Platformy</a></li>
+    <li><a href="#results">Wyniki</a></li>
+    <li><a href="#why-us">Dlaczego my</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact" class="nav-cta"><span>Zacznij teraz</span></a></li>
+  </ul>
 
   <!-- ── HERO CINEMATIC ── -->
   <section id="hero-section" style="background: var(--bg-dark);">
@@ -2384,6 +2473,26 @@
   </footer>
 
   <script>
+    // ── HAMBURGER MENU ──
+    (function() {
+      const btn = document.getElementById('nav-hamburger');
+      const menu = document.getElementById('nav-mobile');
+      if (!btn || !menu) return;
+
+      btn.addEventListener('click', function() {
+        btn.classList.toggle('open');
+        menu.classList.toggle('open');
+      });
+
+      // Zamknij po kliknięciu w link
+      menu.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', function() {
+          btn.classList.remove('open');
+          menu.classList.remove('open');
+        });
+      });
+    })();
+
     // Scroll reveal
     const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-pop');
     const observer = new IntersectionObserver((entries) => {
