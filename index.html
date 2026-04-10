@@ -991,6 +991,116 @@
       margin-right: auto;
     }
 
+    /* Web Design Portfolio */
+    .webdesign-section {
+      background: var(--bg-dark);
+      padding: 6rem 2rem;
+    }
+    .webdesign-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      align-items: flex-start;
+    }
+    @media (min-width: 900px) {
+      .webdesign-inner {
+        flex-direction: row;
+        align-items: center;
+        gap: 4rem;
+      }
+    }
+    .webdesign-text {
+      flex: 0 0 320px;
+      max-width: 340px;
+    }
+    .webdesign-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brand-teal);
+      margin-bottom: 0.75rem;
+    }
+    .webdesign-heading {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .webdesign-heading em {
+      font-style: normal;
+      color: var(--brand-teal);
+    }
+    .webdesign-desc {
+      font-size: 0.95rem;
+      color: var(--body-text--d-bg);
+      line-height: 1.7;
+    }
+    .webdesign-accordion {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
+      height: 420px;
+      overflow: hidden;
+    }
+    .wd-item {
+      position: relative;
+      flex: 0 0 56px;
+      border-radius: 1rem;
+      overflow: hidden;
+      cursor: pointer;
+      transition: flex 0.6s cubic-bezier(0.4,0,0.2,1);
+    }
+    .wd-item.wd-active {
+      flex: 1 1 0%;
+    }
+    .wd-item img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      transition: transform 0.6s ease;
+    }
+    .wd-item:hover img {
+      transform: scale(1.04);
+    }
+    .wd-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.15) 60%, transparent 100%);
+    }
+    .wd-label {
+      position: absolute;
+      bottom: 1.25rem;
+      left: 50%;
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: transform 0.5s ease, opacity 0.4s ease;
+      transform: translateX(-50%) rotate(90deg);
+      opacity: 0.7;
+    }
+    .wd-item.wd-active .wd-label {
+      transform: translateX(-50%) rotate(0deg);
+      opacity: 1;
+      bottom: 1.25rem;
+    }
+    @media (max-width: 600px) {
+      .webdesign-accordion {
+        height: 280px;
+      }
+      .wd-item {
+        flex: 0 0 40px;
+      }
+    }
+
     /* Contact form */
     .contact-form {
       max-width: 640px;
@@ -2084,6 +2194,45 @@
     </div>
   </section>
 
+  <!-- ── WEB DESIGN PORTFOLIO ── -->
+  <section class="webdesign-section">
+    <div class="webdesign-inner">
+      <div class="webdesign-text reveal">
+        <p class="webdesign-label">Przykłady realizacji</p>
+        <h2 class="webdesign-heading">Projektujemy strony,<br>które <em>sprzedają</em></h2>
+        <p class="webdesign-desc">Każda strona to przemyślana kompozycja — szybka, responsywna i zoptymalizowana pod konwersję. Oto kilka przykładów naszych realizacji.</p>
+        <a href="#contact" class="btn-primary" style="width:fit-content;margin-top:2rem;"><span>Zamów wycenę</span></a>
+      </div>
+      <div class="webdesign-accordion reveal reveal-d2">
+        <div class="wd-item" data-index="0">
+          <img src="Assety/Emu 1.png" alt="Realizacja 1" />
+          <div class="wd-overlay"></div>
+          <span class="wd-label">Projekt 1</span>
+        </div>
+        <div class="wd-item" data-index="1">
+          <img src="Assety/Emu 2.png" alt="Realizacja 2" />
+          <div class="wd-overlay"></div>
+          <span class="wd-label">Projekt 2</span>
+        </div>
+        <div class="wd-item wd-active" data-index="2">
+          <img src="Assety/Emu 3.png" alt="Realizacja 3" />
+          <div class="wd-overlay"></div>
+          <span class="wd-label">Projekt 3</span>
+        </div>
+        <div class="wd-item" data-index="3">
+          <img src="Assety/Emu 4.png" alt="Realizacja 4" />
+          <div class="wd-overlay"></div>
+          <span class="wd-label">Projekt 4</span>
+        </div>
+        <div class="wd-item" data-index="4">
+          <img src="Assety/Emu5.png" alt="Realizacja 5" />
+          <div class="wd-overlay"></div>
+          <span class="wd-label">Projekt 5</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ── PLATFORMS ── -->
   <section id="platforms" class="platforms">
     <div class="platforms-inner">
@@ -3076,6 +3225,18 @@ void main(void){
       resize();
       window.addEventListener('resize', resize);
       requestAnimationFrame(render);
+    })();
+  </script>
+  <script>
+    // Web Design Accordion
+    (function() {
+      const items = document.querySelectorAll('.wd-item');
+      items.forEach(function(item) {
+        item.addEventListener('mouseenter', function() {
+          items.forEach(function(i) { i.classList.remove('wd-active'); });
+          item.classList.add('wd-active');
+        });
+      });
     })();
   </script>
 </body>
