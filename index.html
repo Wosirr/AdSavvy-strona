@@ -1045,7 +1045,7 @@
       transition: height 0.6s cubic-bezier(0.4,0,0.2,1);
     }
     .wd-item.wd-active {
-      height: 380px;
+      height: 380px; /* nadpisywane przez JS */
     }
     .wd-item img {
       position: absolute;
@@ -3190,10 +3190,28 @@ void main(void){
     // Web Design Accordion
     (function() {
       const items = document.querySelectorAll('.wd-item');
+
+      function setActiveHeight(item) {
+        const img = item.querySelector('img');
+        const containerWidth = item.offsetWidth;
+        const ratio = img.naturalHeight / img.naturalWidth;
+        const fullHeight = containerWidth * ratio;
+        item.style.height = fullHeight + 'px';
+      }
+
       items.forEach(function(item) {
+        const img = item.querySelector('img');
         item.addEventListener('mouseenter', function() {
-          items.forEach(function(i) { i.classList.remove('wd-active'); });
+          items.forEach(function(i) {
+            i.classList.remove('wd-active');
+            i.style.height = '';
+          });
           item.classList.add('wd-active');
+          if (img.complete && img.naturalWidth) {
+            setActiveHeight(item);
+          } else {
+            img.addEventListener('load', function() { setActiveHeight(item); }, { once: true });
+          }
         });
       });
     })();
