@@ -1001,19 +1001,10 @@
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 3rem;
-      align-items: flex-start;
-    }
-    @media (min-width: 900px) {
-      .webdesign-inner {
-        flex-direction: row;
-        align-items: center;
-        gap: 4rem;
-      }
+      gap: 2.5rem;
     }
     .webdesign-text {
-      flex: 0 0 320px;
-      max-width: 340px;
+      max-width: 600px;
     }
     .webdesign-label {
       font-size: 0.75rem;
@@ -1040,17 +1031,17 @@
       line-height: 1.7;
     }
     .webdesign-accordion {
-      flex: 1;
+      width: 100%;
       display: flex;
       flex-direction: row;
       gap: 0.5rem;
-      height: 420px;
+      height: 260px;
       overflow: hidden;
     }
     .wd-item {
       position: relative;
-      flex: 0 0 56px;
-      border-radius: 1rem;
+      flex: 0 0 44px;
+      border-radius: 0.75rem;
       overflow: hidden;
       cursor: pointer;
       transition: flex 0.6s cubic-bezier(0.4,0,0.2,1);
@@ -1060,7 +1051,7 @@
     }
     @keyframes wd-scroll {
       0%, 10%  { transform: translateY(0); }
-      90%, 100% { transform: translateY(calc(-100% + 420px)); }
+      90%, 100% { transform: translateY(calc(-100% + 260px)); }
     }
     .wd-item img {
       position: absolute;
@@ -1096,10 +1087,10 @@
     }
     @media (max-width: 600px) {
       .webdesign-accordion {
-        height: 280px;
+        height: 180px;
       }
       .wd-item {
-        flex: 0 0 40px;
+        flex: 0 0 32px;
       }
     }
 
