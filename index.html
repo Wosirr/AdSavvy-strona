@@ -1058,6 +1058,12 @@
     .wd-item.wd-active {
       flex: 1 1 0%;
     }
+    @keyframes wd-scroll {
+      0%   { object-position: top; }
+      45%  { object-position: bottom; }
+      55%  { object-position: bottom; }
+      100% { object-position: top; }
+    }
     .wd-item img {
       position: absolute;
       inset: 0;
@@ -1065,10 +1071,10 @@
       height: 100%;
       object-fit: cover;
       object-position: top;
-      transition: transform 0.6s ease;
+      transition: object-position 0s;
     }
-    .wd-item:hover img {
-      transform: scale(1.04);
+    .wd-item.wd-active img {
+      animation: wd-scroll 8s ease-in-out infinite;
     }
     .wd-overlay {
       position: absolute;
