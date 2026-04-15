@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 – AdSavvy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #0c0d0f;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+    .wrap { max-width: 500px; }
+    .robot-wrap {
+      display: flex;
+      justify-content: center;
+      gap: -20px;
+      margin-bottom: 2rem;
+    }
+    .robot-wrap img {
+      width: 120px;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 24px rgba(0,0,0,0.5));
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .robot-wrap img:first-child { transform: rotate(-8deg); margin-right: -20px; }
+    .robot-wrap img:last-child  { transform: rotate(6deg); }
+    .robot-wrap img:hover { transform: translateY(-10px) rotate(0deg) scale(1.1); }
+    .error-code {
+      font-size: 6rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      background: linear-gradient(90deg, #E6006E, #0DE5E6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+    h1 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    p {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #E6006E;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.75rem 1.75rem;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn:hover { background: #cc005f; transform: translateY(-2px); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="robot-wrap">
+      <img src="Assety/Savi.png" alt="Savi">
+      <img src="Assety/Adi.png" alt="Adi">
+    </div>
+    <div class="error-code">404</div>
+    <h1>Ups, ta strona nie istnieje.</h1>
+    <p>Ale Twoje reklamy mogą zacząć działać.<br>Wróćmy tam gdzie coś się dzieje.</p>
+    <a href="/" class="btn">
+      Wróć na stronę główną →
+    </a>
+  </div>
+</body>
+</html>

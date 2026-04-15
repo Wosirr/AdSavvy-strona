@@ -991,6 +991,153 @@
       margin-right: auto;
     }
 
+    /* ── ROBOTS ── */
+    .robot {
+      object-fit: contain;
+      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.35));
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+      pointer-events: none;
+      user-select: none;
+    }
+    .robot:hover { transform: translateY(-8px) rotate(6deg) scale(1.08); }
+
+    /* Service card robots */
+    .card-robot {
+      position: absolute;
+      bottom: -8px;
+      right: 16px;
+      width: 90px;
+      pointer-events: auto;
+    }
+
+    /* FAQ robot icons */
+    .faq-robot {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+      vertical-align: middle;
+      margin-right: 0.5rem;
+    }
+    .faq-question {
+      display: flex;
+      align-items: center;
+    }
+
+    /* About section */
+    .about-section {
+      background: var(--bg-dark);
+      padding: 5rem 2rem;
+    }
+    .about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      align-items: center;
+      text-align: center;
+    }
+    @media (min-width: 900px) {
+      .about-inner {
+        flex-direction: row;
+        text-align: left;
+        gap: 5rem;
+        align-items: center;
+      }
+    }
+    .about-text { flex: 1; }
+    .about-text .section-label { margin-bottom: 0.75rem; }
+    .about-text h2 {
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    .about-text h2 em { font-style: normal; color: var(--brand-teal); }
+    .about-text p {
+      color: var(--body-text--d-bg);
+      font-size: 1rem;
+      line-height: 1.75;
+      max-width: 460px;
+    }
+    .about-robots {
+      position: relative;
+      flex: 0 0 260px;
+      height: 220px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .about-robots .robot-adi {
+      width: 130px;
+      position: relative;
+      z-index: 2;
+      transform: rotate(-6deg);
+      margin-right: -20px;
+    }
+    .about-robots .robot-savi {
+      width: 110px;
+      position: relative;
+      z-index: 1;
+      transform: rotate(5deg);
+    }
+
+    /* Floating chat widget */
+    .chat-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.75rem;
+    }
+    .chat-float-bubble {
+      background: var(--bg-dark);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--white);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.8rem;
+      padding: 0.6rem 1rem;
+      border-radius: 1rem 1rem 0 1rem;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.3s, transform 0.3s;
+      pointer-events: none;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+    .chat-float:hover .chat-float-bubble {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .chat-float-btn {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--bg-dark);
+      border: 2px solid rgba(255,255,255,0.12);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+      cursor: pointer;
+      overflow: hidden;
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .chat-float-btn:hover {
+      transform: scale(1.12);
+      box-shadow: 0 12px 40px rgba(230,0,110,0.3);
+    }
+    .chat-float-btn img {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+    }
+
     /* Web Design Portfolio */
     .webdesign-section {
       background: var(--bg-dark);
@@ -2023,6 +2170,25 @@
     </div>
   </section>
 
+  <!-- ── O MNIE ── -->
+  <section class="about-section">
+    <div class="about-inner">
+      <div class="about-text reveal">
+        <p class="section-label">Kim jestem</p>
+        <h2>Nie agencja.<br>Jeden człowiek<br>i jego <em>ekipa.</em></h2>
+        <p style="margin-top:1rem;">Jestem Wojtek — prowadzę kampanie Google Ads i Meta Ads osobiście, od analizy po optymalizację. Adi i Savi to moi nieoficjalni asystenci. Adi dba o to żeby strony wyglądały, Savi pilnuje żeby liczby się zgadzały.</p>
+        <a href="#contact" class="btn-primary" style="width:fit-content;margin-top:1.75rem;">
+          <span>Porozmawiaj ze mną</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5L13 7l-5.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="about-robots reveal reveal-d2">
+        <img src="Assety/Adi.png" alt="Adi" class="robot robot-adi">
+        <img src="Assety/Savi.png" alt="Savi" class="robot robot-savi">
+      </div>
+    </div>
+  </section>
+
   <!-- ── SERVICES ── -->
   <section id="services" class="services">
     <div class="services-header">
@@ -2040,6 +2206,7 @@
           <h3 class="card-title">Reklamy, które zarabiają — nie tylko chodzą</h3>
           <p class="card-desc">Buduję kampanie dla firm, które chcą klientów z internetu. Nie "zasięgów" i "wyświetleń" — konkretnych zapytań i zamówień. Ostatni wynik: ROAS 797%, koszt konwersji 31,75 zł.</p>
         </div>
+        <img src="Assety/Savi.png" alt="Savi" class="robot card-robot">
         <a href="#contact" class="card-arrow" style="background:rgba(255,255,255,0.15);">
           <svg viewBox="0 0 16 16" fill="none"><path d="M1 8h14M8 1l7 7-7 7" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
@@ -2052,6 +2219,7 @@
           <h3 class="card-title">Strona jako narzędzie sprzedaży</h3>
           <p class="card-desc">Masz ruch, ale mało zapytań? Projektuję strony i landing page'e nastawione na konwersję — nie na nagrody za design. Szybkie, responsywne, gotowe pod kampanie.</p>
         </div>
+        <img src="Assety/Adi.png" alt="Adi" class="robot card-robot">
         <a href="#contact" class="card-arrow" style="background:rgba(0,0,0,0.12);">
           <svg viewBox="0 0 16 16" fill="none"><path d="M1 8h14M8 1l7 7-7 7" stroke="rgba(0,0,0,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
@@ -2063,6 +2231,10 @@
           <p class="card-label">03 — Audyt i strategia</p>
           <h3 class="card-title">Wiesz, że coś nie gra — ale nie wiesz co</h3>
           <p class="card-desc">Masz reklamy, ale wyniki nie trzymają? Przeglądam kampanie, tracking i strukturę konta. Dostajesz konkretną listę zmian z priorytetami — nie ogólny raport z ładnymi wykresami.</p>
+        </div>
+        <div style="position:absolute;bottom:-8px;right:16px;display:flex;gap:-10px;">
+          <img src="Assety/Adi.png" alt="Adi" class="robot" style="width:72px;transform:rotate(-5deg);margin-right:-18px;position:relative;z-index:2;">
+          <img src="Assety/Savi.png" alt="Savi" class="robot" style="width:72px;transform:rotate(5deg);position:relative;z-index:1;">
         </div>
         <a href="#contact" class="card-arrow" style="background:rgba(255,255,255,0.1);">
           <svg viewBox="0 0 16 16" fill="none"><path d="M1 8h14M8 1l7 7-7 7" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2455,6 +2627,7 @@
 
       <div class="faq-item reveal-left">
         <button class="faq-question" onclick="toggleFaq(this)">
+          <img src="Assety/Adi.png" alt="" class="robot faq-robot">
           W czym dokładnie możesz mi pomóc?
           <span class="faq-icon">+</span>
         </button>
@@ -2465,6 +2638,7 @@
 
       <div class="faq-item reveal-left reveal-d1">
         <button class="faq-question" onclick="toggleFaq(this)">
+          <img src="Assety/Savi.png" alt="" class="robot faq-robot">
           Ile czasu mija do pierwszych wyników?
           <span class="faq-icon">+</span>
         </button>
@@ -2475,6 +2649,7 @@
 
       <div class="faq-item reveal-left reveal-d2">
         <button class="faq-question" onclick="toggleFaq(this)">
+          <img src="Assety/Savi.png" alt="" class="robot faq-robot">
           Jaki minimalny budżet reklamowy muszę mieć?
           <span class="faq-icon">+</span>
         </button>
@@ -2485,6 +2660,7 @@
 
       <div class="faq-item reveal-left reveal-d3">
         <button class="faq-question" onclick="toggleFaq(this)">
+          <img src="Assety/Adi.png" alt="" class="robot faq-robot">
           Czy można rozwiązać umowę w każdej chwili?
           <span class="faq-icon">+</span>
         </button>
@@ -2495,6 +2671,7 @@
 
       <div class="faq-item reveal-left reveal-d4">
         <button class="faq-question" onclick="toggleFaq(this)">
+          <img src="Assety/Adi.png" alt="" class="robot faq-robot">
           Jak wygląda start współpracy?
           <span class="faq-icon">+</span>
         </button>
@@ -3182,6 +3359,14 @@ void main(void){
       requestAnimationFrame(render);
     })();
   </script>
+  <!-- ── FLOATING CHAT WIDGET ── -->
+  <div class="chat-float">
+    <div class="chat-float-bubble">Cześć! Masz pytanie? Napisz 👋</div>
+    <a href="#contact" class="chat-float-btn" aria-label="Napisz do mnie">
+      <img src="Assety/Adi.png" alt="Adi">
+    </a>
+  </div>
+
   <script>
     // Web Design Accordion
     (function() {
