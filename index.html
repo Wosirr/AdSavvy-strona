@@ -1109,7 +1109,8 @@
       pointer-events: none;
       box-shadow: 0 4px 20px rgba(0,0,0,0.4);
     }
-    .chat-float:hover .chat-float-bubble {
+    .chat-float:hover .chat-float-bubble,
+    .chat-float-bubble.visible {
       opacity: 1;
       transform: translateY(0);
     }
@@ -2177,7 +2178,7 @@
     <div class="about-inner">
       <div class="about-text reveal">
         <p class="section-label">Kim jestem</p>
-        <h2>Nie agencja.<br>Michał i jego <em>ekipa.</em></h2>
+        <h2>Nie agencja.<br>Jeden człowiek<br>i jego <em>ekipa.</em></h2>
         <p style="margin-top:1rem;">Jestem Michał — prowadzę kampanie Google Ads i Meta Ads osobiście, od analizy po optymalizację. Adi i Savi to moi nieoficjalni asystenci. Adi dba o to żeby strony wyglądały, Savi pilnuje żeby liczby się zgadzały.</p>
         <a href="#contact" class="btn-primary" style="width:fit-content;margin-top:1.75rem;">
           <span>Porozmawiaj ze mną</span>
@@ -2185,8 +2186,7 @@
         </a>
       </div>
       <div class="about-robots reveal reveal-d2">
-        <img src="Assety/Adi.png" alt="Adi" class="robot robot-adi">
-        <img src="Assety/Savi.png" alt="Savi" class="robot robot-savi">
+        <img src="Assety/Adi i Savi razem.png" alt="Adi i Savi" class="robot" style="width:280px;transform:none;">
       </div>
     </div>
   </section>
@@ -3362,13 +3362,34 @@ void main(void){
     })();
   </script>
   <!-- ── FLOATING CHAT WIDGET ── -->
-  <div class="chat-float">
-    <div class="chat-float-bubble">Cześć! Masz pytanie? Napisz 👋</div>
+  <div class="chat-float" id="chat-float">
+    <div class="chat-float-bubble" id="chat-bubble">Cześć! Masz pytanie? Napisz 👋</div>
     <a href="#contact" class="chat-float-btn" aria-label="Napisz do mnie">
       <img src="Assety/Adi.png" alt="Adi">
     </a>
   </div>
 
+  <script>
+    // Chat widget bubble
+    (function() {
+      const messages = [
+        'Cześć! Masz pytanie? Napisz 👋',
+        'Bezpłatna rozmowa — 30 min 🎯',
+        'Sprawdź czy mogę Ci pomóc →',
+        'Reklamy bez efektu? Porozmawiajmy 💬',
+      ];
+      const bubble = document.getElementById('chat-bubble');
+      let msgIndex = 0;
+      function showBubble() {
+        bubble.textContent = messages[msgIndex % messages.length];
+        msgIndex++;
+        bubble.classList.add('visible');
+        setTimeout(function() { bubble.classList.remove('visible'); }, 4000);
+      }
+      setTimeout(showBubble, 5000);
+      setInterval(showBubble, 18000);
+    })();
+  </script>
   <script>
     // Web Design Accordion
     (function() {
