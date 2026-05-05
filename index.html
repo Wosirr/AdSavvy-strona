@@ -992,6 +992,20 @@
     }
 
     /* ── ROBOTS ── */
+    @keyframes robotFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      33%       { transform: translateY(-12px) rotate(2deg); }
+      66%       { transform: translateY(-6px) rotate(-1deg); }
+    }
+    @keyframes robotFloatB {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      33%       { transform: translateY(-8px) rotate(-2deg); }
+      66%       { transform: translateY(-14px) rotate(1deg); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .robot { animation: none !important; }
+      .btn-primary, .nav-cta { transition: none !important; }
+    }
     .robot {
       object-fit: contain;
       filter: drop-shadow(0 8px 20px rgba(0,0,0,0.35));
@@ -2513,28 +2527,28 @@
       <div class="why-grid">
 
         <div class="why-card reveal">
-          <div class="why-icon pink">🤝</div>
+          <div class="why-icon pink"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
           <h3>Zaczynam od Twojego biznesu</h3>
           <p>Nie wdrażam gotowego szablonu. Przed każdą kampanią rozmawiam z klientem — chcę wiedzieć co sprzedajesz, komu i dlaczego kupują. Dopiero potem buduję strategię.</p>
           <span class="why-badge pink">Zero szablonów</span>
         </div>
 
         <div class="why-card reveal reveal-d1">
-          <div class="why-icon teal">💰</div>
+          <div class="why-icon teal"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
           <h3>Nie ruszam z budżetem bez sensu</h3>
           <p>Jeśli warunki nie są gotowe — powiem Ci o tym wprost, zanim wydasz złotówkę. Wolę stracić klienta niż przepalić jego pieniądze na kampanię, która nie ma prawa działać.</p>
           <span class="why-badge teal">Szczerość przed sprzedażą</span>
         </div>
 
         <div class="why-card reveal reveal-d2">
-          <div class="why-icon navy">📱</div>
+          <div class="why-icon navy"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
           <h3>Piszesz do mnie, nie do bota</h3>
           <p>Jestem jednoosobową agencją. To znaczy, że gdy piszesz — odpisuję ja. Nie junior, nie asystent. Decyzje zapadają szybko, bez gry w głuchy telefon.</p>
           <span class="why-badge navy">Bezpośredni kontakt</span>
         </div>
 
         <div class="why-card reveal reveal-d3">
-          <div class="why-icon pink">📊</div>
+          <div class="why-icon pink"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l4-8 4 4 4-6 4 5"/></svg></div>
           <h3>Widzisz każdą złotówkę</h3>
           <p>Dostajesz dostęp do panelu w czasie rzeczywistym. Pokazuję co działam i dlaczego — nie czekasz do comiesięcznego raportu, żeby wiedzieć co się dzieje z budżetem.</p>
           <span class="why-badge pink">Pełny wgląd na żywo</span>
@@ -3340,6 +3354,106 @@ void main(void){
     </a>
   </div>
 
+  <script>
+    // ── ANIMATIONS ──
+    (function() {
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduced) return;
+
+      // 1. Floating robots
+      const floatTargets = document.querySelectorAll('.robot-adi, .robot-savi, .about-robots .robot');
+      floatTargets.forEach(function(el, i) {
+        const delay = i * 0.4;
+        const duration = 3 + i * 0.5;
+        el.style.animation = `robotFloat ${duration}s ${delay}s ease-in-out infinite`;
+      });
+
+      // 2. Magnetic CTA buttons
+      document.querySelectorAll('.btn-primary, .nav-cta').forEach(function(btn) {
+        btn.addEventListener('mousemove', function(e) {
+          const r = btn.getBoundingClientRect();
+          const x = e.clientX - r.left - r.width / 2;
+          const y = e.clientY - r.top - r.height / 2;
+          btn.style.transform = `translate(${x * 0.18}px, ${y * 0.18}px)`;
+        });
+        btn.addEventListener('mouseleave', function() {
+          btn.style.transform = '';
+          btn.style.transition = 'transform 0.4s cubic-bezier(0.34,1.56,0.64,1)';
+          setTimeout(function() { btn.style.transition = ''; }, 400);
+        });
+      });
+
+      // 3. 3D card tilt on service cards
+      document.querySelectorAll('.service-card, .why-card, .platform-card').forEach(function(card) {
+        card.addEventListener('mousemove', function(e) {
+          const r = card.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - 0.5;
+          const y = (e.clientY - r.top) / r.height - 0.5;
+          card.style.transform = `perspective(600px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) translateY(-4px)`;
+          card.style.transition = 'transform 0.1s ease';
+        });
+        card.addEventListener('mouseleave', function() {
+          card.style.transform = '';
+          card.style.transition = 'transform 0.5s cubic-bezier(0.34,1.56,0.64,1)';
+        });
+      });
+
+      // 4. Stagger entrance via IntersectionObserver
+      const staggerGroups = [
+        '.why-grid .why-card',
+        '.services-grid .service-card',
+        '.platforms-grid .platform-card',
+        '.results-grid .result-card',
+      ];
+      staggerGroups.forEach(function(selector) {
+        const els = document.querySelectorAll(selector);
+        els.forEach(function(el, i) {
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(32px)';
+          el.style.transition = `opacity 0.6s ${i * 0.1}s ease, transform 0.6s ${i * 0.1}s cubic-bezier(0.34,1.56,0.64,1)`;
+        });
+        const obs = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = '1';
+              entry.target.style.transform = 'translateY(0)';
+            }
+          });
+        }, { threshold: 0.15 });
+        els.forEach(function(el) { obs.observe(el); });
+      });
+
+      // 5. Section heading split reveal
+      document.querySelectorAll('.why-us h2, .about-text h2, .webdesign-heading, .platforms-inner h2').forEach(function(h) {
+        h.style.overflow = 'hidden';
+        h.style.opacity = '0';
+        h.style.transform = 'translateY(40px)';
+        h.style.transition = 'opacity 0.7s ease, transform 0.7s cubic-bezier(0.16,1,0.3,1)';
+        const obs = new IntersectionObserver(function(entries) {
+          entries.forEach(function(e) {
+            if (e.isIntersecting) {
+              h.style.opacity = '1';
+              h.style.transform = 'translateY(0)';
+              obs.disconnect();
+            }
+          });
+        }, { threshold: 0.3 });
+        obs.observe(h);
+      });
+
+      // 6. Pulse glow on why-icon hover
+      document.querySelectorAll('.why-icon').forEach(function(icon) {
+        icon.addEventListener('mouseenter', function() {
+          icon.style.transform = 'scale(1.2) rotate(8deg)';
+          icon.style.transition = 'transform 0.3s cubic-bezier(0.34,1.56,0.64,1)';
+        });
+        icon.addEventListener('mouseleave', function() {
+          icon.style.transform = '';
+        });
+      });
+
+    })();
+  </script>
   <script>
     // Chat widget bubble
     (function() {
