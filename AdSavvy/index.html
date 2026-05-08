@@ -13,6 +13,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AdSavvy – Koordynacja, która zamienia kliknięcia w zyski</title>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="shortcut icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <meta name="theme-color" content="#0c0d0f">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -991,6 +995,244 @@
       margin-right: auto;
     }
 
+    /* ── ROBOTS ── */
+    @keyframes robotFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      33%       { transform: translateY(-12px) rotate(2deg); }
+      66%       { transform: translateY(-6px) rotate(-1deg); }
+    }
+    @keyframes robotFloatB {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      33%       { transform: translateY(-8px) rotate(-2deg); }
+      66%       { transform: translateY(-14px) rotate(1deg); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .robot { animation: none !important; }
+      .btn-primary, .nav-cta { transition: none !important; }
+    }
+    .robot {
+      object-fit: contain;
+      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.35));
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+      pointer-events: none;
+      user-select: none;
+    }
+    .robot:hover { transform: translateY(-8px) rotate(6deg) scale(1.08); }
+
+    /* Service card robots */
+    .card-robot {
+      position: absolute;
+      bottom: -8px;
+      right: 16px;
+      width: 90px;
+      pointer-events: auto;
+    }
+
+    /* FAQ robot icons */
+    .faq-robot {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+      vertical-align: middle;
+      margin-right: 0.5rem;
+    }
+    .faq-question {
+      display: flex;
+      align-items: center;
+    }
+
+    /* About section */
+    .about-section {
+      background: var(--bg-dark);
+      padding: 5rem 2rem;
+    }
+    .about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      align-items: center;
+      text-align: center;
+    }
+    @media (min-width: 900px) {
+      .about-inner {
+        flex-direction: row;
+        text-align: left;
+        gap: 5rem;
+        align-items: center;
+      }
+    }
+    .about-text { flex: 1; }
+    .about-text .section-label { margin-bottom: 0.75rem; }
+    .about-text h2 {
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    .about-text h2 em { font-style: normal; color: var(--brand-teal); }
+    .about-text p {
+      color: var(--body-text--d-bg);
+      font-size: 1rem;
+      line-height: 1.75;
+      max-width: 460px;
+    }
+    .about-robots {
+      position: relative;
+      flex: 0 0 460px;
+      height: 400px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .about-robots .robot-adi {
+      width: 170px;
+      position: relative;
+      z-index: 2;
+      transform: rotate(-6deg);
+      margin-right: -28px;
+    }
+    .about-robots .robot-savi {
+      width: 150px;
+      position: relative;
+      z-index: 1;
+      transform: rotate(5deg);
+    }
+
+    /* Floating chat widget */
+    .chat-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.75rem;
+    }
+    .chat-float-bubble {
+      background: var(--bg-dark);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--white);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.8rem;
+      padding: 0.6rem 1rem;
+      border-radius: 1rem 1rem 0 1rem;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.3s, transform 0.3s;
+      pointer-events: none;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+    .chat-float:hover .chat-float-bubble,
+    .chat-float-bubble.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .chat-float-btn {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--bg-dark);
+      border: 2px solid rgba(255,255,255,0.12);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+      cursor: pointer;
+      overflow: visible;
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
+      text-decoration: none;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .chat-float-btn:hover {
+      transform: scale(1.12);
+      box-shadow: 0 12px 40px rgba(230,0,110,0.3);
+    }
+    .chat-float-btn img {
+      width: 68px;
+      height: 68px;
+      object-fit: contain;
+      object-position: bottom center;
+      margin-bottom: -2px;
+    }
+
+    /* Web Design Portfolio */
+    .webdesign-section {
+      background: var(--bg-dark);
+      padding: 6rem 2rem;
+    }
+    .webdesign-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+    .webdesign-text {
+      max-width: 600px;
+    }
+    .webdesign-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brand-teal);
+      margin-bottom: 0.75rem;
+    }
+    .webdesign-heading {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .webdesign-heading em {
+      font-style: normal;
+      color: var(--brand-teal);
+    }
+    .webdesign-desc {
+      font-size: 0.95rem;
+      color: var(--body-text--d-bg);
+      line-height: 1.7;
+    }
+    .webdesign-accordion {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .wd-item {
+      position: relative;
+      height: 48px;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      cursor: pointer;
+      transition: height 0.6s cubic-bezier(0.4,0,0.2,1);
+    }
+    .wd-item.wd-active {
+      height: 380px; /* nadpisywane przez JS */
+    }
+    .wd-item img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      transition: transform 0.6s ease;
+    }
+    .wd-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 40%);
+    }
+    @media (max-width: 600px) {
+      .wd-item { height: 36px; }
+      .wd-item.wd-active { height: 240px; }
+    }
+
     /* Contact form */
     .contact-form {
       max-width: 640px;
@@ -1187,7 +1429,7 @@
     }
 
     .text-track {
-      font-size: clamp(2.75rem, 6vw, 6rem);
+      font-size: clamp(1.75rem, 4vw, 4rem);
       font-weight: 700; letter-spacing: -0.03em;
       color: var(--white); line-height: 1.1;
       text-shadow: 0 10px 30px rgba(255,255,255,0.1);
@@ -1792,7 +2034,7 @@
       <li><a href="#results">Wyniki</a></li>
       <li><a href="#why-us">Dlaczego my</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a href="#contact" class="nav-cta"><span>Zacznij teraz</span></a></li>
+      <li><a href="#contact" class="nav-cta"><span>Kontakt</span></a></li>
     </ul>
     <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
       <span></span>
@@ -1808,7 +2050,7 @@
     <li><a href="#results">Wyniki</a></li>
     <li><a href="#why-us">Dlaczego my</a></li>
     <li><a href="#faq">FAQ</a></li>
-    <li><a href="#contact" class="nav-cta"><span>Zacznij teraz</span></a></li>
+    <li><a href="#contact" class="nav-cta"><span>Kontakt</span></a></li>
   </ul>
 
   <!-- ── HERO CINEMATIC ── -->
@@ -1823,23 +2065,24 @@
     <!-- Background text layer (animates in on load, fades as card rises) -->
     <div class="hero-text-wrapper">
       <h1 class="text-track">
-        <span class="text-desktop">Budżet to narzędzie. Zysk to cel.</span>
-        <span class="text-mobile">Liczą się wyniki.</span>
+        <span class="text-desktop">Reklamy idą. Sprzedaży nie ma. Znam to.</span>
+        <span class="text-mobile">Koniec z przepalonym budżetem.</span>
       </h1>
       <h1 class="text-days">Savvy?</h1>
     </div>
 
     <!-- CTA layer (appears at end of scroll animation) -->
     <div class="cta-wrapper">
-      <h2>Gotowy na <em>wzrost?</em></h2>
-      <p>Umów bezpłatną konsultację strategiczną i razem zaplanujmy Twoją drogę do wyższych wyników.</p>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:1rem;">
+      <h2>Prowadzę kampanie osobiście.<br><em>Nie delegując do juniorów.</em></h2>
+      <p>Google Ads i Meta Ads dla małych firm i e-commerce w Polsce. Piszesz do mnie — nie do konsultanta, nie do bota.</p>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:0.75rem;">
         <a href="#contact" class="btn-primary" style="font-family:'Poppins',sans-serif;">
-          <span>Umów bezpłatną rozmowę</span>
+          <span>Umów bezpłatną rozmowę (30 min)</span>
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5L13 7l-5.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a href="#services" style="color:rgba(255,255,255,0.4);font-size:0.875rem;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;">
-          Nasze usługi ↓
+        <span style="color:rgba(255,255,255,0.35);font-size:0.8rem;">Bez umów na rok. Możesz odejść kiedy chcesz.</span>
+        <a href="#services" style="color:rgba(255,255,255,0.4);font-size:0.875rem;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;margin-top:0.25rem;">
+          Co robię ↓
         </a>
       </div>
     </div>
@@ -1852,8 +2095,8 @@
 
         <!-- Left: performance text -->
         <div class="card-left-text" id="card-left">
-          <h3>Performance marketing, na który możesz liczyć.</h3>
-          <p><span style="color:white;font-weight:600;">AdSavvy</span> łączy kampanie data-driven z pełną transparentnością wyników — Meta, Google, TikTok i search arbitrage pod jednym dachem.</p>
+          <h3>Mówię wprost co trzeba zmienić. I sam to wdrażam.</h3>
+          <p>Ostatnia kampania: <span style="color:white;font-weight:600;">43 600 zł sprzedaży</span> przy 5 460 zł budżetu. ROAS 797%, koszt konwersji 31,75 zł. Dane z panelu Google Ads.</p>
         </div>
 
         <!-- Center: phone mockup -->
@@ -1948,61 +2191,67 @@
     </div>
   </section>
 
+  <!-- ── O MNIE ── -->
+  <section class="about-section">
+    <div class="about-inner">
+      <div class="about-text reveal">
+        <p class="section-label">Kim jestem</p>
+        <h2>Nie agencja.<br>Jeden człowiek<br>i jego <em>ekipa.</em></h2>
+        <p style="margin-top:1rem;">Jestem Michał — prowadzę kampanie Google Ads i Meta Ads osobiście, od analizy po optymalizację. Adi i Savi to moi nieoficjalni asystenci. Adi dba o to żeby strony wyglądały, Savi pilnuje żeby liczby się zgadzały.</p>
+        <a href="#contact" class="btn-primary" style="width:fit-content;margin-top:1.75rem;">
+          <span>Porozmawiaj ze mną</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5L13 7l-5.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="about-robots reveal reveal-d2">
+        <img src="Assety/AdiiSavirazem.png" alt="Adi i Savi" class="robot" style="width:460px;transform:none;">
+      </div>
+    </div>
+  </section>
+
   <!-- ── SERVICES ── -->
   <section id="services" class="services">
     <div class="services-header">
       <div>
-        <p class="section-label reveal">Co robimy</p>
-        <h2 class="reveal reveal-d1">Cztery filary.<br>Jedna agencja.</h2>
+        <p class="section-label reveal">Co robię</p>
+        <h2 class="reveal reveal-d1">Trzy usługi.<br><em>Jeden człowiek.</em></h2>
       </div>
     </div>
     <div class="services-grid">
 
-      <!-- Lead Generation -->
+      <!-- Google Ads & Meta Ads -->
       <div class="service-card lead reveal">
         <div>
-          <p class="card-label">01 — Lead Generation</p>
-          <h3 class="card-title">Wypełnij lejek kwalifikowanymi leadami</h3>
-          <p class="card-desc">Budujemy i zarządzamy wysokokonwertującymi lejkami na Meta, Google i TikToku, które dostarczają prospektów gotowych do zakupu.</p>
+          <p class="card-label">01 — Google Ads & Meta Ads</p>
+          <h3 class="card-title">Reklamy, które zarabiają — nie tylko chodzą</h3>
+          <p class="card-desc">Buduję kampanie dla firm, które chcą klientów z internetu. Nie "zasięgów" i "wyświetleń" — konkretnych zapytań i zamówień. Ostatni wynik: ROAS 797%, koszt konwersji 31,75 zł.</p>
         </div>
         <a href="#contact" class="card-arrow" style="background:rgba(255,255,255,0.15);">
           <svg viewBox="0 0 16 16" fill="none"><path d="M1 8h14M8 1l7 7-7 7" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
 
-      <!-- E-Commerce -->
-      <div class="service-card ecom reveal reveal-d1">
-        <div>
-          <p class="card-label">02 — E-Commerce</p>
-          <h3 class="card-title">Skaluj swój sklep z płatnym ruchem</h3>
-          <p class="card-desc">Od DTC po dominację na marketplace'ach — optymalizujemy cały Twój paid acquisition stack, by generować wzrost przychodów miesiąc po miesiącu.</p>
-        </div>
-        <a href="#contact" class="card-arrow" style="background:rgba(0,0,0,0.1);">
-          <svg viewBox="0 0 16 16" fill="none"><path d="M1 8h14M8 1l7 7-7 7" stroke="rgba(0,0,0,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-
-      <!-- Search Arbitrage -->
-      <div class="service-card search reveal reveal-d2">
-        <div>
-          <p class="card-label">03 — Search Arbitrage</p>
-          <h3 class="card-title">Monetyzuj intencyjny ruch w sieci</h3>
-          <p class="card-desc">Zamieniamy ruch o wysokiej intencji zakupowej w przewidywalne strumienie przychodów dzięki programatycznym strategiom arbitrażu optymalizowanym każdego dnia.</p>
-        </div>
-        <a href="#contact" class="card-arrow" style="background:rgba(255,255,255,0.1);">
-          <svg viewBox="0 0 16 16" fill="none"><path d="M1 8h14M8 1l7 7-7 7" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-
       <!-- Web Design -->
-      <div class="service-card web reveal reveal-d2">
+      <div class="service-card web reveal reveal-d1">
         <div>
-          <p class="card-label">04 — Web Design</p>
-          <h3 class="card-title">Strona, która sprzedaje 24/7</h3>
-          <p class="card-desc">Projektujemy i wdrażamy szybkie, nowoczesne strony oraz landing page'e zoptymalizowane pod konwersję — gotowe do skalowania kampaniami.</p>
+          <p class="card-label">02 — Web Design</p>
+          <h3 class="card-title">Strona jako narzędzie sprzedaży</h3>
+          <p class="card-desc">Masz ruch, ale mało zapytań? Projektuję strony i landing page'e nastawione na konwersję — nie na nagrody za design. Szybkie, responsywne, gotowe pod kampanie.</p>
         </div>
         <a href="#contact" class="card-arrow" style="background:rgba(0,0,0,0.12);">
           <svg viewBox="0 0 16 16" fill="none"><path d="M1 8h14M8 1l7 7-7 7" stroke="rgba(0,0,0,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <!-- Audyt i strategia -->
+      <div class="service-card ecom reveal reveal-d2">
+        <div>
+          <p class="card-label">03 — Audyt i strategia</p>
+          <h3 class="card-title">Wiesz, że coś nie gra — ale nie wiesz co</h3>
+          <p class="card-desc">Masz reklamy, ale wyniki nie trzymają? Przeglądam kampanie, tracking i strukturę konta. Dostajesz konkretną listę zmian z priorytetami — nie ogólny raport z ładnymi wykresami.</p>
+        </div>
+        <a href="#contact" class="card-arrow" style="background:rgba(255,255,255,0.1);">
+          <svg viewBox="0 0 16 16" fill="none"><path d="M1 8h14M8 1l7 7-7 7" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
 
@@ -2012,7 +2261,7 @@
   <!-- ── RESULTS TICKER ── -->
   <section class="results-section" id="results">
     <div class="results-inner">
-      <p class="section-label reveal" style="text-align:center;margin-bottom:0.5rem;">Realne wyniki naszych kampanii</p>
+      <p class="section-label reveal" style="text-align:center;margin-bottom:0.5rem;">Realne wyniki moich kampanii</p>
       <p class="reveal" style="text-align:center;font-size:0.8rem;color:rgba(255,255,255,0.35);margin-bottom:1.25rem;letter-spacing:0.01em;">Sklep ze sprzętem sportowym · Google Ads · Q1 2026</p>
       <div class="results-grid">
 
@@ -2079,6 +2328,40 @@
         <div>
           <p class="testimonial-name">Właściciel sklepu</p>
           <p class="testimonial-role">Sklep ze sprzętem sportowym · zweryfikowany klient AdSavvy</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WEB DESIGN PORTFOLIO ── -->
+  <section class="webdesign-section">
+    <div class="webdesign-inner">
+      <div class="webdesign-text reveal">
+        <p class="webdesign-label">Przykłady realizacji</p>
+        <h2 class="webdesign-heading">Projektuję strony,<br>które <em>sprzedają</em></h2>
+        <p class="webdesign-desc">Każda strona to przemyślana kompozycja — szybka, responsywna i zoptymalizowana pod konwersję. Oto przykład mojej realizacji.</p>
+        <a href="#contact" class="btn-primary" style="width:fit-content;margin-top:2rem;"><span>Zamów wycenę</span></a>
+      </div>
+      <div class="webdesign-accordion reveal reveal-d2">
+        <div class="wd-item" data-index="0">
+          <img src="Assety/Emu 1.png" alt="" />
+          <div class="wd-overlay"></div>
+        </div>
+        <div class="wd-item" data-index="1">
+          <img src="Assety/Emu 2.png" alt="" />
+          <div class="wd-overlay"></div>
+        </div>
+        <div class="wd-item wd-active" data-index="2">
+          <img src="Assety/Emu 3.png" alt="" />
+          <div class="wd-overlay"></div>
+        </div>
+        <div class="wd-item" data-index="3">
+          <img src="Assety/Emu 4.png" alt="" />
+          <div class="wd-overlay"></div>
+        </div>
+        <div class="wd-item" data-index="4">
+          <img src="Assety/Emu5.png" alt="" />
+          <div class="wd-overlay"></div>
         </div>
       </div>
     </div>
@@ -2236,36 +2519,43 @@
   <section id="why-us" class="why-us">
     <div class="why-us-inner">
       <div class="why-header">
-        <p class="section-label reveal" style="color:var(--lead-generation);">Dlaczego my</p>
-        <h2 class="reveal reveal-d1">Co nas <em>wyróżnia?</em></h2>
+        <p class="section-label reveal" style="color:var(--lead-generation);">Dlaczego ja</p>
+        <h2 class="reveal reveal-d1">Czego <em>nie dostaniesz</em><br>w dużej agencji.</h2>
       </div>
       <div class="why-grid">
 
         <div class="why-card reveal">
-          <div class="why-icon pink">📊</div>
-          <h3>Data-Driven</h3>
-          <p>Każda decyzja opiera się na danych, nie intuicji. Testujemy, mierzymy i skalujemy wyłącznie to, co realnie działa — bez marnowania budżetu na zgadywanie.</p>
-          <span class="why-badge pink">Oparte na danych</span>
+          <div class="why-icon pink"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+          <h3>Zaczynam od Twojego biznesu</h3>
+          <p>Nie wdrażam gotowego szablonu. Przed każdą kampanią rozmawiam z klientem — chcę wiedzieć co sprzedajesz, komu i dlaczego kupują. Dopiero potem buduję strategię.</p>
+          <span class="why-badge pink">Zero szablonów</span>
         </div>
 
         <div class="why-card reveal reveal-d1">
-          <div class="why-icon teal">🔍</div>
-          <h3>Pełna transparentność</h3>
-          <p>Masz dostęp do wszystkich danych w czasie rzeczywistym. Zero ukrytych kosztów, zero czarnych skrzynek — wiesz dokładnie za co płacisz i jakie osiągasz wyniki.</p>
-          <span class="why-badge teal">Pełen wgląd</span>
+          <div class="why-icon teal"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <h3>Nie ruszam z budżetem bez sensu</h3>
+          <p>Jeśli warunki nie są gotowe — powiem Ci o tym wprost, zanim wydasz złotówkę. Wolę stracić klienta niż przepalić jego pieniądze na kampanię, która nie ma prawa działać.</p>
+          <span class="why-badge teal">Szczerość przed sprzedażą</span>
         </div>
 
         <div class="why-card reveal reveal-d2">
-          <div class="why-icon navy">🎯</div>
-          <h3>Skupienie na ROAS</h3>
-          <p>Naszym jedynym celem jest Twój zwrot z inwestycji. Nie interesują nas vanity metrics — liczy się tylko to, co bezpośrednio wpływa na Twój biznes i przychody.</p>
-          <span class="why-badge navy">Wyniki biznesowe</span>
+          <div class="why-icon navy"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <h3>Piszesz do mnie, nie do bota</h3>
+          <p>Jestem jednoosobową agencją. To znaczy, że gdy piszesz — odpisuję ja. Nie junior, nie asystent. Decyzje zapadają szybko, bez gry w głuchy telefon.</p>
+          <span class="why-badge navy">Bezpośredni kontakt</span>
+        </div>
+
+        <div class="why-card reveal reveal-d3">
+          <div class="why-icon pink"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l4-8 4 4 4-6 4 5"/></svg></div>
+          <h3>Widzisz każdą złotówkę</h3>
+          <p>Dostajesz dostęp do panelu w czasie rzeczywistym. Pokazuję co działam i dlaczego — nie czekasz do comiesięcznego raportu, żeby wiedzieć co się dzieje z budżetem.</p>
+          <span class="why-badge pink">Pełny wgląd na żywo</span>
         </div>
 
       </div>
       <div style="display:flex;justify-content:center;margin-top:2.5rem;">
         <a href="#contact" class="btn-primary reveal">
-          <span>Sprawdź, ile tracisz bez nas</span>
+          <span>Sprawdź, czy mogę Ci pomóc</span>
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5L13 7l-5.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
@@ -2279,24 +2569,24 @@
       <!-- Text -->
       <div class="globe-text reveal">
         <p class="section-label">Zasięg bez granic</p>
-        <h2>Pomożemy Ci<br>dotrzeć <em>wszędzie.</em></h2>
-        <p>Nie ograniczamy się do jednego rynku ani platformy. Nasze kampanie docierają do Twoich klientów — bez względu na to, gdzie na świecie się znajdują.</p>
+        <h2>Docieramy tam,<br>gdzie są <em>Twoi klienci.</em></h2>
+        <p>Prowadzę kampanie w Polsce i za granicą — na Google, Meta i TikToku. Jeśli Twoi klienci są w internecie, mogę do nich dotrzeć.</p>
         <a href="#contact" class="btn-primary" style="width:fit-content;">
-          <span>Porozmawiaj z nami</span>
+          <span>Porozmawiaj ze mną</span>
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5L13 7l-5.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
         <div class="globe-stats">
           <div>
-            <div class="globe-stat-value pink">30+</div>
-            <div class="globe-stat-label">rynków<br>obsługiwanych</div>
+            <div class="globe-stat-value pink">797%</div>
+            <div class="globe-stat-label">ROAS<br>ostatniej kampanii</div>
           </div>
           <div>
-            <div class="globe-stat-value teal">5</div>
-            <div class="globe-stat-label">platform<br>reklamowych</div>
+            <div class="globe-stat-value teal">31,75 zł</div>
+            <div class="globe-stat-label">koszt<br>konwersji</div>
           </div>
           <div>
-            <div class="globe-stat-value" style="color:var(--e-commerce);">24/7</div>
-            <div class="globe-stat-label">monitoring<br>kampanii</div>
+            <div class="globe-stat-value" style="color:var(--e-commerce);">43 600 zł</div>
+            <div class="globe-stat-label">wartość<br>sprzedaży</div>
           </div>
         </div>
       </div>
@@ -2312,90 +2602,61 @@
     </div>
   </section>
 
-  <!-- ── SVG MASK EFFECT ── -->
-  <section class="mask-section" id="mask-section">
-
-    <!-- Base layer: dark, what you see before hover -->
-    <div class="mask-base">
-      <div style="max-width:800px;">
-        <p class="section-label" style="color:var(--secondary-text--d-bg);margin-bottom:1rem;">Przesuń kursor</p>
-        <h2>Czy Twój budżet reklamowy<br>naprawdę pracuje<br><em>na Ciebie?</em></h2>
-        <a href="#contact" class="btn-primary" style="margin-top:2rem;width:fit-content;">
-          <span>Dowiedz się za darmo</span>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5L13 7l-5.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-    </div>
-
-    <!-- Overlay layer: light, revealed through cursor circle -->
-    <div class="mask-overlay" id="mask-overlay">
-      <div class="mask-overlay-content" id="mask-trigger">
-        <p class="section-label">Z AdSavvy</p>
-        <h2>Każda złotówka wraca<br>z procentem.<br><em>Gwarantujemy.</em></h2>
-        <a href="#contact" class="btn-primary" style="margin-top:2rem;width:fit-content;background:var(--bg-dark);color:var(--white);">
-          <span>Dowiedz się za darmo</span>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5L13 7l-5.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-    </div>
-
-  </section>
-
   <!-- ── FAQ ── -->
   <section id="faq" class="faq">
     <div class="faq-header reveal">
       <h2>Często zadawane<br>pytania</h2>
-      <p class="faq-subtitle">Wszystko, co musisz wiedzieć o współpracy z nami.</p>
+      <p class="faq-subtitle">Wszystko, co warto wiedzieć przed rozmową ze mną.</p>
     </div>
     <div class="faq-list">
 
       <div class="faq-item reveal-left">
         <button class="faq-question" onclick="toggleFaq(this)">
-          W jakich kanałach się specjalizujecie?
+          W czym dokładnie możesz mi pomóc?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          Specjalizujemy się w Meta Ads, Google Ads, TikTok Ads i programmatic display. Nasz zespół ma głęboką ekspertyzę w zakresie atrybucji cross-channel i alokacji budżetu, aby maksymalizować blended ROAS.
+          Prowadzę kampanie Google Ads i Meta Ads, projektuję strony nastawione na konwersję oraz robię audyty kont reklamowych. Jeśli masz reklamy które nie przynoszą efektu albo chcesz zacząć od zera — napisz, zobaczę czy i jak mogę pomóc.
         </div>
       </div>
 
       <div class="faq-item reveal-left reveal-d1">
         <button class="faq-question" onclick="toggleFaq(this)">
-          Jak szybko mogę spodziewać się wyników?
+          Ile czasu mija do pierwszych wyników?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          Większość klientów widzi znaczące poprawy w ciągu pierwszych 30 dni, gdy budujemy i optymalizujemy kampanie. Znaczące wzrosty ROAS zazwyczaj materializują się w ciągu 60–90 dni, gdy nasze modele danych dojrzewają.
+          To zależy od punktu startowego. Przy kampaniach od zera — pierwsze dane masz w ciągu 7–14 dni, sensowne wnioski po ok. 30. Przy optymalizacji istniejących kont bywa szybciej. Nie obiecuję cudów w tydzień, bo to byłoby kłamstwo.
         </div>
       </div>
 
       <div class="faq-item reveal-left reveal-d2">
         <button class="faq-question" onclick="toggleFaq(this)">
-          Jaki jest minimalny budżet reklamowy?
+          Jaki minimalny budżet reklamowy muszę mieć?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          Zazwyczaj pracujemy z markami inwestującymi minimum 10 000 zł/mies. w budżet reklamowy. Zapewnia to wystarczającą ilość danych do przeprowadzania sensownych testów i dostarczania istotnego, stabilnego wzrostu.
+          Minimalny budżet to ok. 2 000–3 000 zł miesięcznie na samą reklamę. Poniżej tej kwoty algorytmy nie mają co optymalizować i wyniki są losowe. Jeśli masz mniej — powiem Ci wprost, że lepiej poczekać.
         </div>
       </div>
 
       <div class="faq-item reveal-left reveal-d3">
         <button class="faq-question" onclick="toggleFaq(this)">
-          Czy oferujecie rozliczenie za wyniki?
+          Czy można rozwiązać umowę w każdej chwili?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          Tak — dla dojrzałych marek z wystarczającymi danymi historycznymi możemy skonstruować retainer powiązany z wynikami, gdzie część naszego wynagrodzenia zależy od uzgodnionych KPI, takich jak ROAS, CPA czy cele przychodowe.
+          Tak. Pracuję bez długoterminowych umów — miesięczny okres wypowiedzenia. Zależy mi na tym, żebyś zostawał dlatego że wyniki są dobre, nie dlatego że podpisałeś papier na rok.
         </div>
       </div>
 
       <div class="faq-item reveal-left reveal-d4">
         <button class="faq-question" onclick="toggleFaq(this)">
-          Jak zacząć współpracę?
+          Jak wygląda start współpracy?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          Kliknij „Zacznij teraz" i wypełnij krótki formularz. Umówimy bezpłatną 30-minutową rozmowę strategiczną, aby zaudytować Twoje obecne działania i zidentyfikować najlepsze możliwości wzrostu dla Twojego biznesu.
+          Wypełnij formularz kontaktowy. Odpiszę i umówimy bezpłatną 30-minutową rozmowę — chcę zrozumieć Twój biznes zanim zaproponuję cokolwiek. Jeśli nie będę w stanie pomóc, powiem to wprost.
         </div>
       </div>
 
@@ -2412,8 +2673,8 @@
   <section id="contact" class="cta-section">
     <img src="Assety/AdSavvy Logo (2) (1).png" alt="" class="cta-logo-mark reveal" aria-hidden="true">
     <p class="cta-label reveal">Porozmawiajmy</p>
-    <h2 class="reveal reveal-d1">Gotowy na <em>wzrost?</em></h2>
-    <p class="reveal reveal-d2">Napisz do nas — odpiszemy w ciągu 24 godzin i umówimy bezpłatną konsultację strategiczną.</p>
+    <h2 class="reveal reveal-d1">Sprawdź, czy mogę<br><em>Ci pomóc.</em></h2>
+    <p class="reveal reveal-d2">Napisz — odpisuję osobiście w ciągu 24 godzin. Umówimy bezpłatną 30-minutową rozmowę i zobaczę co można poprawić.</p>
 
     <form class="contact-form reveal reveal-d2" id="contact-form" novalidate>
       <div class="contact-row">
@@ -2453,7 +2714,7 @@
         <svg width="14" height="14" viewBox="0 0 21 20" fill="none"><path d="m18.038 10.663-5.625 5.625a.94.94 0 0 1-1.328-1.328l4.024-4.023H3.625a.938.938 0 0 1 0-1.875h11.484l-4.022-4.025a.94.94 0 0 1 1.328-1.328l5.625 5.625a.935.935 0 0 1-.002 1.33" fill="#fff"/></svg>
       </button>
 
-      <p class="contact-form-note">Możesz też napisać bezpośrednio: kontakt@adsavvy.pl</p>
+      <p class="contact-form-note">Możesz też napisać bezpośrednio: kontakt@adsavvy.pl &nbsp;·&nbsp; <a href="tel:+48530535019">+48 530 535 019</a></p>
     </form>
 
     <div class="contact-success" id="contact-success">
@@ -3076,6 +3337,165 @@ void main(void){
       resize();
       window.addEventListener('resize', resize);
       requestAnimationFrame(render);
+    })();
+  </script>
+  <!-- ── FLOATING CHAT WIDGET ── -->
+  <div class="chat-float" id="chat-float">
+    <div class="chat-float-bubble" id="chat-bubble">Cześć! Masz pytanie? Napisz 👋</div>
+    <a href="#contact" class="chat-float-btn" aria-label="Napisz do mnie">
+      <img src="Assety/Adi.png" alt="Adi">
+    </a>
+  </div>
+
+  <script>
+    // ── ANIMATIONS ──
+    (function() {
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduced) return;
+
+      // 1. Floating robots
+      const floatTargets = document.querySelectorAll('.robot-adi, .robot-savi, .about-robots .robot');
+      floatTargets.forEach(function(el, i) {
+        const delay = i * 0.4;
+        const duration = 3 + i * 0.5;
+        el.style.animation = `robotFloat ${duration}s ${delay}s ease-in-out infinite`;
+      });
+
+      // 2. Magnetic CTA buttons
+      document.querySelectorAll('.btn-primary, .nav-cta').forEach(function(btn) {
+        btn.addEventListener('mousemove', function(e) {
+          const r = btn.getBoundingClientRect();
+          const x = e.clientX - r.left - r.width / 2;
+          const y = e.clientY - r.top - r.height / 2;
+          btn.style.transform = `translate(${x * 0.18}px, ${y * 0.18}px)`;
+        });
+        btn.addEventListener('mouseleave', function() {
+          btn.style.transform = '';
+          btn.style.transition = 'transform 0.4s cubic-bezier(0.34,1.56,0.64,1)';
+          setTimeout(function() { btn.style.transition = ''; }, 400);
+        });
+      });
+
+      // 3. 3D card tilt on service cards
+      document.querySelectorAll('.service-card, .why-card, .platform-card').forEach(function(card) {
+        card.addEventListener('mousemove', function(e) {
+          const r = card.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - 0.5;
+          const y = (e.clientY - r.top) / r.height - 0.5;
+          card.style.transform = `perspective(600px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) translateY(-4px)`;
+          card.style.transition = 'transform 0.1s ease';
+        });
+        card.addEventListener('mouseleave', function() {
+          card.style.transform = '';
+          card.style.transition = 'transform 0.5s cubic-bezier(0.34,1.56,0.64,1)';
+        });
+      });
+
+      // 4. Stagger entrance via IntersectionObserver
+      const staggerGroups = [
+        '.why-grid .why-card',
+        '.services-grid .service-card',
+        '.platforms-grid .platform-card',
+        '.results-grid .result-card',
+      ];
+      staggerGroups.forEach(function(selector) {
+        const els = document.querySelectorAll(selector);
+        els.forEach(function(el, i) {
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(32px)';
+          el.style.transition = `opacity 0.6s ${i * 0.1}s ease, transform 0.6s ${i * 0.1}s cubic-bezier(0.34,1.56,0.64,1)`;
+        });
+        const obs = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = '1';
+              entry.target.style.transform = 'translateY(0)';
+            }
+          });
+        }, { threshold: 0.15 });
+        els.forEach(function(el) { obs.observe(el); });
+      });
+
+      // 5. Section heading split reveal
+      document.querySelectorAll('.why-us h2, .about-text h2, .webdesign-heading, .platforms-inner h2').forEach(function(h) {
+        h.style.overflow = 'hidden';
+        h.style.opacity = '0';
+        h.style.transform = 'translateY(40px)';
+        h.style.transition = 'opacity 0.7s ease, transform 0.7s cubic-bezier(0.16,1,0.3,1)';
+        const obs = new IntersectionObserver(function(entries) {
+          entries.forEach(function(e) {
+            if (e.isIntersecting) {
+              h.style.opacity = '1';
+              h.style.transform = 'translateY(0)';
+              obs.disconnect();
+            }
+          });
+        }, { threshold: 0.3 });
+        obs.observe(h);
+      });
+
+      // 6. Pulse glow on why-icon hover
+      document.querySelectorAll('.why-icon').forEach(function(icon) {
+        icon.addEventListener('mouseenter', function() {
+          icon.style.transform = 'scale(1.2) rotate(8deg)';
+          icon.style.transition = 'transform 0.3s cubic-bezier(0.34,1.56,0.64,1)';
+        });
+        icon.addEventListener('mouseleave', function() {
+          icon.style.transform = '';
+        });
+      });
+
+    })();
+  </script>
+  <script>
+    // Chat widget bubble
+    (function() {
+      const messages = [
+        'Cześć! Masz pytanie? Napisz 👋',
+        'Bezpłatna rozmowa — 30 min 🎯',
+        'Sprawdź czy mogę Ci pomóc →',
+        'Reklamy bez efektu? Porozmawiajmy 💬',
+      ];
+      const bubble = document.getElementById('chat-bubble');
+      let msgIndex = 0;
+      function showBubble() {
+        bubble.textContent = messages[msgIndex % messages.length];
+        msgIndex++;
+        bubble.classList.add('visible');
+        setTimeout(function() { bubble.classList.remove('visible'); }, 4000);
+      }
+      setTimeout(showBubble, 5000);
+      setInterval(showBubble, 18000);
+    })();
+  </script>
+  <script>
+    // Web Design Accordion
+    (function() {
+      const items = document.querySelectorAll('.wd-item');
+
+      function setActiveHeight(item) {
+        const img = item.querySelector('img');
+        const containerWidth = item.offsetWidth;
+        const ratio = img.naturalHeight / img.naturalWidth;
+        const fullHeight = containerWidth * ratio;
+        item.style.height = fullHeight + 'px';
+      }
+
+      items.forEach(function(item) {
+        const img = item.querySelector('img');
+        item.addEventListener('mouseenter', function() {
+          items.forEach(function(i) {
+            i.classList.remove('wd-active');
+            i.style.height = '';
+          });
+          item.classList.add('wd-active');
+          if (img.complete && img.naturalWidth) {
+            setActiveHeight(item);
+          } else {
+            img.addEventListener('load', function() { setActiveHeight(item); }, { once: true });
+          }
+        });
+      });
     })();
   </script>
 </body>
