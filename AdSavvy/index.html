@@ -648,7 +648,7 @@
       // z subtelnym staggerem (80ms) żeby nie było mechanicznie
       var items = document.querySelectorAll('.hero-reveal');
       items.forEach(function(el, i) {
-        setTimeout(function() { el.classList.add('in'); }, 750 + i * 80);
+        setTimeout(function() { el.classList.add('in'); }, 750 + i * 160);
       });
 
       setTimeout(function() { loader.remove(); }, 900);
