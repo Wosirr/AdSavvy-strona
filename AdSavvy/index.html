@@ -620,18 +620,18 @@
   @keyframes loaderFadeIn { to { opacity: 1; } }
   @keyframes lineGrow { to { width: 100%; } }
 
-  /* Hero reveal — tekst wysuwa się spod kurtyny */
-  .reveal-clip {
-    overflow: hidden;
-    display: block;
+  /* Hero reveal — gradient mask sweep od góry */
+  @property --rp {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: -30%;
   }
   .hero-reveal {
-    transform: translateY(110%);
-    transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    -webkit-mask-image: linear-gradient(to bottom, black var(--rp), transparent calc(var(--rp) + 60px));
+    mask-image: linear-gradient(to bottom, black var(--rp), transparent calc(var(--rp) + 60px));
+    transition: --rp 1.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .hero-reveal.in {
-    transform: translateY(0);
-  }
+  .hero-reveal.in { --rp: 120%; }
 </style>
 
 <script>
@@ -722,34 +722,24 @@
 
     <div class="hero-inner" style="display:flex;flex-direction:column;align-items:center;position:relative;z-index:1;">
 
-      <div class="reveal-clip">
-        <div class="hero-pill hero-reveal">
-          <span class="material-symbols-outlined" style="font-size:16px;">bolt</span>
-          Performance Marketing Agency
-        </div>
+      <div class="hero-pill hero-reveal">
+        <span class="material-symbols-outlined" style="font-size:16px;">bolt</span>
+        Performance Marketing Agency
       </div>
-      <div class="reveal-clip">
-        <h1 class="hero-h1 hero-reveal">
-          Wydajesz na reklamy.<br><em>Ja pilnuję żebyś na tym zarabiał.</em>
-        </h1>
+      <h1 class="hero-h1 hero-reveal">
+        Wydajesz na reklamy.<br><em>Ja pilnuję żebyś na tym zarabiał.</em>
+      </h1>
+      <p class="hero-sub hero-reveal">
+        Google Ads i Meta Ads dla małych firm i e-commerce w Polsce. Piszesz do mnie — nie do konsultanta, nie do bota.
+      </p>
+      <div class="hero-actions hero-reveal">
+        <a href="#contact" class="btn-primary">
+          Bezpłatna konsultacja
+          <span class="material-symbols-outlined" style="font-size:18px;">arrow_forward</span>
+        </a>
+        <a href="#services" class="btn-secondary">Co robię ↓</a>
       </div>
-      <div class="reveal-clip">
-        <p class="hero-sub hero-reveal">
-          Google Ads i Meta Ads dla małych firm i e-commerce w Polsce. Piszesz do mnie — nie do konsultanta, nie do bota.
-        </p>
-      </div>
-      <div class="reveal-clip">
-        <div class="hero-actions hero-reveal">
-          <a href="#contact" class="btn-primary">
-            Bezpłatna konsultacja
-            <span class="material-symbols-outlined" style="font-size:18px;">arrow_forward</span>
-          </a>
-          <a href="#services" class="btn-secondary">Co robię ↓</a>
-        </div>
-      </div>
-      <div class="reveal-clip">
-        <p class="hero-sub-note hero-reveal">30 minut · bezpłatnie · bez umów na rok</p>
-      </div>
+      <p class="hero-sub-note hero-reveal">30 minut · bezpłatnie · bez umów na rok</p>
 
     </div>
   </section>
