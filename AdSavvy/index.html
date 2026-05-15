@@ -49,8 +49,6 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400,0..1&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400,0..1&display=swap" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400,0..1&display=swap" /></noscript>
-  <!-- Preload LCP image -->
-  <link rel="preload" as="image" href="Assety/logo-bg.webp" type="image/webp" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html {
@@ -300,6 +298,14 @@
       min-height: 100vh; display: flex; align-items: center; justify-content: center;
       text-align: center; padding: 8rem 2rem 6rem;
       overflow: clip; position: relative;
+    }
+    .hero-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url('Assety/logo-bg.webp') center/min(1200px, 160vw) no-repeat;
+      opacity: 0.09;
+      pointer-events: none;
+      z-index: 0;
     }
     .hero-inner { max-width: 840px; margin: 0 auto; width: 100%; }
     .hero-pill {
@@ -747,19 +753,6 @@
   <!-- HERO -->
   <section class="hero-section">
 
-    <!-- Duże przezroczyste logo w tle -->
-    <img src="Assety/logo-bg.webp" alt="" aria-hidden="true" style="
-      position:absolute;
-      top:50%;left:50%;
-      transform:translate(-50%,-50%);
-      width:min(1200px, 160vw);
-      max-width: none;
-      object-fit:contain;
-      opacity:0.09;
-      pointer-events:none;
-      user-select:none;
-      z-index:0;
-    " loading="eager" fetchpriority="high" decoding="async">
 
     <div class="hero-inner hero-reveal" style="display:flex;flex-direction:column;align-items:center;position:relative;z-index:1;">
 
