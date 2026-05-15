@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Regulamin – AdSavvy</title>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Poppins', sans-serif; background: #f8f9fa; color: #191c1d; -webkit-font-smoothing: antialiased; }
+
+    nav {
+      background: #fff; border-bottom: 1px solid rgba(0,0,0,0.06);
+      padding: 1.25rem 4rem; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+    .nav-logo span { font-size: 1.1rem; font-weight: 700; color: #191c1d; letter-spacing: -0.02em; }
+    .nav-back {
+      font-size: 0.875rem; color: #5b3f45; text-decoration: none; font-weight: 500;
+      display: flex; align-items: center; gap: 0.4rem; transition: color 0.2s;
+    }
+    .nav-back:hover { color: #b80057; }
+    @media (max-width: 640px) { nav { padding: 1rem 1.5rem; } }
+
+    .container {
+      max-width: 780px; margin: 0 auto;
+      padding: 5rem 2rem 6rem;
+    }
+
+    .doc-label {
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: #b80057; margin-bottom: 1rem;
+      display: block;
+    }
+    h1 {
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 800;
+      letter-spacing: -0.04em; color: #191c1d; margin-bottom: 0.5rem; line-height: 1.1;
+    }
+    .doc-date {
+      font-size: 0.8rem; color: rgba(0,0,0,0.35); margin-bottom: 3rem;
+    }
+
+    h2 {
+      font-size: 1.1rem; font-weight: 700; color: #191c1d;
+      margin: 2.5rem 0 0.875rem; letter-spacing: -0.01em;
+    }
+    h2::before {
+      content: attr(data-num) '. ';
+      color: #b80057;
+    }
+    p { font-size: 0.9375rem; color: #5b3f45; line-height: 1.8; margin-bottom: 0.875rem; }
+    ul { padding-left: 1.25rem; margin-bottom: 0.875rem; }
+    li { font-size: 0.9375rem; color: #5b3f45; line-height: 1.8; margin-bottom: 0.375rem; }
+    a { color: #b80057; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .divider {
+      height: 1px; background: rgba(0,0,0,0.08); margin: 3rem 0;
+    }
+
+    .highlight-box {
+      background: rgba(184,0,87,0.04); border-left: 3px solid #b80057;
+      padding: 1.25rem 1.5rem; border-radius: 0 0.5rem 0.5rem 0;
+      margin: 1.5rem 0;
+    }
+    .highlight-box p { margin: 0; }
+
+    footer {
+      background: #0c0d0f; padding: 2rem 4rem;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    footer a { color: rgba(255,255,255,0.3); font-size: 0.8rem; text-decoration: none; }
+    footer p { color: rgba(255,255,255,0.25); font-size: 0.75rem; }
+    @media (max-width: 640px) { footer { padding: 2rem 1.5rem; flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">
+      <img src="Assety/AdSavvy Logo (2) (1).png" alt="AdSavvy" style="width:36px;height:36px;object-fit:contain;">
+      <span>AdSavvy</span>
+    </a>
+    <a href="/" class="nav-back">← Wróć na stronę główną</a>
+  </nav>
+
+  <div class="container">
+    <span class="doc-label">Dokument prawny</span>
+    <h1>Regulamin</h1>
+    <p class="doc-date">Ostatnia aktualizacja: 15 maja 2026 r.</p>
+
+    <div class="highlight-box">
+      <p>Niniejszy regulamin określa zasady świadczenia usług performance marketingu przez AdSavvy. Przesłanie formularza kontaktowego lub zawarcie umowy oznacza akceptację poniższych warunków.</p>
+    </div>
+
+    <h2 data-num="1">Usługodawca</h2>
+    <p>Usługi świadczy:</p>
+    <p><strong>Michał S.</strong><br>
+    prowadzący działalność pod nazwą <strong>AdSavvy</strong><br>
+    NIP: 1990136011<br>
+    E-mail: <a href="mailto:kontakt@adsavvy.pl">kontakt@adsavvy.pl</a><br>
+    Telefon: <a href="tel:+48530535019">+48 530 535 019</a><br>
+    Strona: <a href="https://adsavvy.pl">adsavvy.pl</a></p>
+
+    <div class="divider"></div>
+
+    <h2 data-num="2">Definicje</h2>
+    <ul>
+      <li><strong>Usługodawca</strong> — Michał S. prowadzący działalność pod nazwą AdSavvy</li>
+      <li><strong>Klient</strong> — osoba fizyczna prowadząca działalność gospodarczą lub osoba prawna, która zawarła umowę z Usługodawcą</li>
+      <li><strong>Usługi</strong> — prowadzenie kampanii reklamowych (Google Ads, Meta Ads), projektowanie stron internetowych, audyty kont reklamowych</li>
+      <li><strong>Umowa</strong> — pisemna (w tym mailowa) umowa o świadczenie usług</li>
+      <li><strong>Budżet reklamowy</strong> — środki przeznaczone bezpośrednio na zakup reklam w platformach reklamowych, odrębne od wynagrodzenia Usługodawcy</li>
+    </ul>
+
+    <h2 data-num="3">Zakres usług</h2>
+    <p>AdSavvy świadczy następujące usługi:</p>
+    <ul>
+      <li><strong>Prowadzenie kampanii Google Ads</strong> — konfiguracja, optymalizacja i raportowanie kampanii w sieci wyszukiwania, displayowej, zakupowej i wideo</li>
+      <li><strong>Prowadzenie kampanii Meta Ads</strong> — kampanie na platformach Facebook i Instagram, w tym retargeting i lookalike audiences</li>
+      <li><strong>Projektowanie stron internetowych i landing page'y</strong> — nastawione na konwersję</li>
+      <li><strong>Audyt kont reklamowych</strong> — analiza istniejących kampanii z rekomendacjami zmian</li>
+      <li><strong>Konfiguracja analityki</strong> — Google Analytics 4, Meta Pixel, śledzenie konwersji</li>
+    </ul>
+    <p>Szczegółowy zakres usług określa każdorazowo indywidualna umowa.</p>
+
+    <h2 data-num="4">Zawarcie umowy</h2>
+    <p>Umowa zostaje zawarta po:</p>
+    <ul>
+      <li>Przeprowadzeniu bezpłatnej konsultacji wstępnej (do 30 minut)</li>
+      <li>Przesłaniu przez Usługodawcę indywidualnej oferty</li>
+      <li>Akceptacji oferty przez Klienta (pisemnie lub mailowo)</li>
+      <li>Uregulowaniu pierwszej płatności (jeśli dotyczy)</li>
+    </ul>
+    <p>Usługodawca zastrzega sobie prawo do odmowy świadczenia usług bez podania przyczyny.</p>
+
+    <h2 data-num="5">Wynagrodzenie i płatności</h2>
+    <ul>
+      <li>Wynagrodzenie ustalane jest indywidualnie i określane w umowie</li>
+      <li>Faktury wystawiane są do 7. dnia roboczego każdego miesiąca za miesiąc bieżący lub poprzedni (zgodnie z umową)</li>
+      <li>Termin płatności wynosi 14 dni od daty wystawienia faktury, o ile umowa nie stanowi inaczej</li>
+      <li>Za nieterminową płatność naliczane są odsetki ustawowe za opóźnienie w transakcjach handlowych</li>
+      <li><strong>Budżet reklamowy jest odrębny</strong> od wynagrodzenia Usługodawcy i rozliczany bezpośrednio przez Klienta z platformą reklamową lub przez Usługodawcę na podstawie osobnego rozliczenia</li>
+    </ul>
+
+    <h2 data-num="6">Obowiązki Klienta</h2>
+    <ul>
+      <li>Dostarczenie niezbędnych dostępów do kont reklamowych, Analytics i innych narzędzi</li>
+      <li>Terminowe przekazywanie informacji i materiałów potrzebnych do realizacji usługi</li>
+      <li>Zapewnienie minimalnego budżetu reklamowego (min. 2 000–3 000 zł/mies.), o ile nie ustalono inaczej</li>
+      <li>Terminowe regulowanie płatności</li>
+      <li>Informowanie Usługodawcy o zmianach w biznesie mających wpływ na kampanie</li>
+    </ul>
+
+    <h2 data-num="7">Obowiązki Usługodawcy</h2>
+    <ul>
+      <li>Prowadzenie kampanii zgodnie z najlepszą wiedzą i praktykami branżowymi</li>
+      <li>Raportowanie wyników w uzgodnionych terminach</li>
+      <li>Dostępność i terminowa odpowiedź na wiadomości Klienta (do 24h w dni robocze)</li>
+      <li>Zachowanie poufności danych i informacji Klienta</li>
+    </ul>
+
+    <h2 data-num="8">Gwarancje i wyłączenia odpowiedzialności</h2>
+    <p>Usługodawca <strong>nie gwarantuje</strong> osiągnięcia konkretnych wyników reklamowych (np. określonego ROAS, liczby leadów, sprzedaży), gdyż są one zależne od wielu czynników niezależnych od Usługodawcy, w tym:</p>
+    <ul>
+      <li>Jakości strony internetowej i oferty Klienta</li>
+      <li>Konkurencji rynkowej i sezonowości</li>
+      <li>Algorytmów platform reklamowych</li>
+      <li>Wysokości dostępnego budżetu reklamowego</li>
+    </ul>
+    <p>Usługodawca nie odpowiada za straty wynikające z decyzji Klienta podjętych wbrew rekomendacjom Usługodawcy.</p>
+    <p>Odpowiedzialność Usługodawcy jest ograniczona do wysokości wynagrodzenia netto za ostatnie 3 miesiące współpracy.</p>
+
+    <h2 data-num="9">Czas trwania i wypowiedzenie umowy</h2>
+    <ul>
+      <li>Umowa zawierana jest na czas nieokreślony, o ile strony nie ustalą inaczej</li>
+      <li>Każda ze stron może wypowiedzieć umowę z zachowaniem <strong>miesięcznego okresu wypowiedzenia</strong>, ze skutkiem na koniec miesiąca kalendarzowego</li>
+      <li>Wypowiedzenie wymaga formy pisemnej (dopuszczalny e-mail)</li>
+      <li>W przypadku rażącego naruszenia warunków umowy przez Klienta (np. brak płatności powyżej 30 dni), Usługodawca może rozwiązać umowę ze skutkiem natychmiastowym</li>
+    </ul>
+
+    <h2 data-num="10">Poufność</h2>
+    <p>Obie strony zobowiązują się do zachowania w tajemnicy wszelkich informacji poufnych uzyskanych w trakcie współpracy, w szczególności danych o wynikach kampanii, strategiach marketingowych i danych finansowych. Obowiązek poufności trwa przez 2 lata po zakończeniu współpracy.</p>
+
+    <h2 data-num="11">Własność intelektualna</h2>
+    <p>Z chwilą uregulowania pełnego wynagrodzenia, Klient nabywa prawa do materiałów stworzonych na jego zlecenie (kreacje, teksty, projekty stron). Usługodawca zachowuje prawo do prezentowania realizacji w swoim portfolio, chyba że Klient wyrazi sprzeciw na piśmie.</p>
+
+    <h2 data-num="12">Reklamacje</h2>
+    <p>Reklamacje dotyczące świadczonych usług należy zgłaszać na adres <a href="mailto:kontakt@adsavvy.pl">kontakt@adsavvy.pl</a> w terminie 14 dni od dnia, w którym Klient powziął wiedzę o przyczynie reklamacji.</p>
+    <p>Usługodawca rozpatruje reklamację w terminie 14 dni roboczych od jej otrzymania i informuje Klienta o wyniku postępowania reklamacyjnego.</p>
+
+    <h2 data-num="13">Postanowienia końcowe</h2>
+    <ul>
+      <li>Regulamin podlega prawu polskiemu</li>
+      <li>Wszelkie spory będą rozstrzygane przez sąd właściwy dla siedziby Usługodawcy</li>
+      <li>Usługodawca zastrzega prawo do zmiany regulaminu. O zmianach Klient zostanie poinformowany mailowo z 14-dniowym wyprzedzeniem</li>
+      <li>W sprawach nieuregulowanych niniejszym regulaminem stosuje się przepisy Kodeksu cywilnego oraz innych powszechnie obowiązujących przepisów prawa polskiego</li>
+    </ul>
+
+    <div class="divider"></div>
+
+    <p style="font-size:0.8rem;color:rgba(0,0,0,0.3);font-style:italic;">
+      Niniejszy regulamin ma charakter ogólny. Szczegółowe warunki współpracy określane są każdorazowo w indywidualnej umowie, która w przypadku rozbieżności ma pierwszeństwo przed regulaminem.
+    </p>
+  </div>
+
+  <footer>
+    <p>© 2026 AdSavvy · Michał S. · NIP: 1990136011</p>
+    <div style="display:flex;gap:1.5rem;">
+      <a href="/polityka-prywatnosci.html">Polityka prywatności</a>
+      <a href="/regulamin.html">Regulamin</a>
+      <a href="/">Strona główna</a>
+    </div>
+  </footer>
+
+</body>
+</html>
