@@ -575,12 +575,11 @@
     position: fixed; inset: 0; z-index: 99999;
     display: flex; flex-direction: column;
     align-items: center; justify-content: center; gap: 2.5rem;
-    background: #0c0d0f;
-    clip-path: circle(150% at 50% 50%);
-    transition: clip-path 0.75s cubic-bezier(0.76, 0, 0.24, 1);
+    background: #f8f9fa;
+    transition: opacity 0.7s ease;
   }
   #page-loader.hide {
-    clip-path: circle(0% at 50% 50%);
+    opacity: 0;
     pointer-events: none;
   }
 
@@ -593,7 +592,7 @@
     opacity: 0;
     animation: loaderReveal 0.9s cubic-bezier(0.16,1,0.3,1) 0.2s forwards;
   }
-  .loader-ad   { color: #fff; }
+  .loader-ad   { color: #191c1d; }
   .loader-savvy {
     background: linear-gradient(90deg, #E6006E, #0DE5E6);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
@@ -607,10 +606,10 @@
 
   .loader-line {
     width: 120px; height: 1px;
-    background: rgba(255,255,255,0.08);
+    background: rgba(0,0,0,0.08);
     border-radius: 1px; overflow: hidden;
     opacity: 0;
-    animation: fadeIn 0.3s ease 0.6s forwards;
+    animation: loaderFadeIn 0.3s ease 0.6s forwards;
   }
   .loader-line-fill {
     height: 100%;
@@ -618,8 +617,15 @@
     width: 0;
     animation: lineGrow 0.9s cubic-bezier(0.16,1,0.3,1) 0.6s forwards;
   }
-  @keyframes fadeIn { to { opacity: 1; } }
+  @keyframes loaderFadeIn { to { opacity: 1; } }
   @keyframes lineGrow { to { width: 100%; } }
+
+  /* Page content reveal */
+  #page-content {
+    opacity: 0;
+    transition: opacity 0.8s ease;
+  }
+  #page-content.visible { opacity: 1; }
 </style>
 
 <script>
@@ -628,9 +634,13 @@
       var loader = document.getElementById('page-loader');
       if (!loader) return;
       loader.classList.add('hide');
-      setTimeout(function() { loader.remove(); }, 800);
+      // Pokaż treść strony chwilę po starcie zanikania loadera
+      setTimeout(function() {
+        var content = document.getElementById('page-content');
+        if (content) content.classList.add('visible');
+      }, 300);
+      setTimeout(function() { loader.remove(); }, 900);
     }
-    // Dismiss after animation completes (≈1.6s), or on load — whichever is later
     var dismissed = false;
     function dismiss() {
       if (dismissed) return;
@@ -639,12 +649,12 @@
     }
     setTimeout(dismiss, 1800);
     window.addEventListener('load', function() {
-      setTimeout(dismiss, 400); // small extra pause after load
+      setTimeout(dismiss, 400);
     });
   })();
 </script>
 
-<div style="width:100%;overflow-x:hidden;position:relative;">
+<div id="page-content" style="width:100%;overflow-x:hidden;position:relative;">
 
   <!-- AURORA -->
   <div class="aurora" aria-hidden="true">
