@@ -620,12 +620,16 @@
   @keyframes loaderFadeIn { to { opacity: 1; } }
   @keyframes lineGrow { to { width: 100%; } }
 
-  /* Page content reveal */
-  #page-content {
+  /* Page content reveal — hero elements wchodzą po kolei */
+  .hero-reveal {
     opacity: 0;
-    transition: opacity 0.8s ease;
+    transform: translateY(18px);
+    transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
   }
-  #page-content.visible { opacity: 1; }
+  .hero-reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
 </style>
 
 <script>
@@ -634,11 +638,17 @@
       var loader = document.getElementById('page-loader');
       if (!loader) return;
       loader.classList.add('hide');
-      // Pokaż treść strony chwilę po starcie zanikania loadera
-      setTimeout(function() {
-        var content = document.getElementById('page-content');
-        if (content) content.classList.add('visible');
-      }, 300);
+
+      // Po zakończeniu fade loadera (700ms) wchodź elementami hero po kolei
+      var items = document.querySelectorAll('.hero-reveal');
+      var baseDelay = 800; // start po zanikaniu loadera
+      var step = 160;      // odstęp między wierszami
+      items.forEach(function(el, i) {
+        setTimeout(function() {
+          el.classList.add('in');
+        }, baseDelay + i * step);
+      });
+
       setTimeout(function() { loader.remove(); }, 900);
     }
     var dismissed = false;
@@ -654,7 +664,7 @@
   })();
 </script>
 
-<div id="page-content" style="width:100%;overflow-x:hidden;position:relative;">
+<div style="width:100%;overflow-x:hidden;position:relative;">
 
   <!-- AURORA -->
   <div class="aurora" aria-hidden="true">
@@ -714,24 +724,24 @@
 
     <div class="hero-inner" style="display:flex;flex-direction:column;align-items:center;position:relative;z-index:1;">
 
-      <div class="hero-pill reveal">
+      <div class="hero-pill hero-reveal">
         <span class="material-symbols-outlined" style="font-size:16px;">bolt</span>
         Performance Marketing Agency
       </div>
-      <h1 class="hero-h1 reveal d1">
+      <h1 class="hero-h1 hero-reveal">
         Wydajesz na reklamy.<br><em>Ja pilnuję żebyś na tym zarabiał.</em>
       </h1>
-      <p class="hero-sub reveal d2">
+      <p class="hero-sub hero-reveal">
         Google Ads i Meta Ads dla małych firm i e-commerce w Polsce. Piszesz do mnie — nie do konsultanta, nie do bota.
       </p>
-      <div class="hero-actions reveal d3">
+      <div class="hero-actions hero-reveal">
         <a href="#contact" class="btn-primary">
           Bezpłatna konsultacja
           <span class="material-symbols-outlined" style="font-size:18px;">arrow_forward</span>
         </a>
         <a href="#services" class="btn-secondary">Co robię ↓</a>
       </div>
-      <p class="hero-sub-note reveal d4">30 minut · bezpłatnie · bez umów na rok</p>
+      <p class="hero-sub-note hero-reveal">30 minut · bezpłatnie · bez umów na rok</p>
 
     </div>
   </section>
