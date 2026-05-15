@@ -9,7 +9,7 @@
     gtag('config', 'AW-18061710127');
   </script>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
   <title>AdSavvy – Koordynacja, która zamienia kliknięcia w zyski</title>
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="shortcut icon" type="image/png" href="/favicon.png">
@@ -21,12 +21,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      overflow-x: clip;
+      max-width: 100%;
+    }
     body {
       font-family: 'Poppins', sans-serif;
       background: #f8f9fa;
       color: #191c1d;
       overflow-x: hidden;
+      max-width: 100%;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -262,6 +267,7 @@
     .hero-section {
       min-height: 100vh; display: flex; align-items: center; justify-content: center;
       text-align: center; padding: 8rem 2rem 6rem;
+      overflow: clip; position: relative;
     }
     .hero-inner { max-width: 840px; margin: 0 auto; width: 100%; }
     .hero-pill {
@@ -522,9 +528,16 @@
       .nav-mobile { display: flex; }
     }
     @media (max-width: 640px) { .nav-inner { padding: 1rem 1.5rem; } }
+
+    /* ── GLOBAL OVERFLOW PROTECTION ── */
+    img, video, svg, canvas, iframe { max-width: 100%; }
+    @media (max-width: 768px) {
+      .forwhom-inner-grid { grid-template-columns: 1fr !important; }
+    }
   </style>
 </head>
 <body>
+<div style="width:100%;overflow-x:hidden;position:relative;">
 
   <!-- AURORA -->
   <div class="aurora" aria-hidden="true">
@@ -573,7 +586,8 @@
       position:absolute;
       top:50%;left:50%;
       transform:translate(-50%,-50%);
-      width:min(1200px,140vw);
+      width:min(1200px, 160vw);
+      max-width: none;
       object-fit:contain;
       opacity:0.09;
       pointer-events:none;
@@ -798,7 +812,7 @@
             Nie każda firma jest gotowa na skuteczne reklamy. Mówię to wprost — bo wolę odmówić niż przepalić Twój budżet.
           </p>
         </div>
-        <div class="reveal-right" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div class="reveal-right forwhom-inner-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
           <!-- TAK -->
           <div style="background:rgba(13,229,230,0.06);border:1px solid rgba(13,229,230,0.15);border-radius:1.25rem;padding:1.75rem;">
             <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#0DE5E6;margin-bottom:1.25rem;">✓ Pasujemy, jeśli</div>
@@ -1264,5 +1278,6 @@
       });
     })();
   </script>
+</div>
 </body>
 </html>
