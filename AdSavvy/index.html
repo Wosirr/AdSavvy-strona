@@ -34,15 +34,23 @@
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
-  <title>AdSavvy – Koordynacja, która zamienia kliknięcia w zyski</title>
+  <title>AdSavvy – Google Ads i Meta Ads dla firm i e-commerce</title>
+  <meta name="description" content="Performance marketing dla małych firm i e-commerce. Google Ads i Meta Ads prowadzone osobiście przez jednego specjalistę. Bezpłatna konsultacja 30 min, bez umów na rok." />
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="shortcut icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" href="/favicon.png">
   <meta name="theme-color" content="#ffffff">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <!-- Fonty ładowane asynchronicznie — nie blokują renderowania -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" /></noscript>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400,0..1&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400,0..1&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400,0..1&display=swap" /></noscript>
+  <!-- Preload LCP image -->
+  <link rel="preload" as="image" href="Assety/Logo bez tła (2).png" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html {
@@ -313,7 +321,7 @@
       max-width: 480px; margin: 0 auto 2.5rem; font-weight: 400;
     }
     .hero-actions { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-    .hero-sub-note { font-size: 0.8rem; color: rgba(0,0,0,0.4); margin-top: 0.75rem; text-align: center; }
+    .hero-sub-note { font-size: 0.8rem; color: rgba(0,0,0,0.55); margin-top: 0.75rem; text-align: center; }
 
     /* Stat cards */
     .stat-card {
@@ -1027,11 +1035,11 @@
         <a href="#contact" class="btn-primary" style="width:fit-content;display:inline-flex;margin-top:2rem;">Zamów wycenę</a>
       </div>
       <div class="webdesign-accordion reveal d1">
-        <div class="wd-item"><img src="Assety/Emu 1.png" alt=""/><div class="wd-overlay"></div></div>
-        <div class="wd-item"><img src="Assety/Emu 2.png" alt=""/><div class="wd-overlay"></div></div>
-        <div class="wd-item wd-active"><img src="Assety/Emu 3.png" alt=""/><div class="wd-overlay"></div></div>
-        <div class="wd-item"><img src="Assety/Emu 4.png" alt=""/><div class="wd-overlay"></div></div>
-        <div class="wd-item"><img src="Assety/Emu5.png" alt=""/><div class="wd-overlay"></div></div>
+        <div class="wd-item"><img src="Assety/Emu 1.png" alt="Projekt strony internetowej 1" loading="lazy"/><div class="wd-overlay"></div></div>
+        <div class="wd-item"><img src="Assety/Emu 2.png" alt="Projekt strony internetowej 2" loading="lazy"/><div class="wd-overlay"></div></div>
+        <div class="wd-item wd-active"><img src="Assety/Emu 3.png" alt="Projekt strony internetowej 3" loading="lazy"/><div class="wd-overlay"></div></div>
+        <div class="wd-item"><img src="Assety/Emu 4.png" alt="Projekt strony internetowej 4" loading="lazy"/><div class="wd-overlay"></div></div>
+        <div class="wd-item"><img src="Assety/Emu5.png" alt="Projekt strony internetowej 5" loading="lazy"/><div class="wd-overlay"></div></div>
       </div>
     </div>
   </section>
@@ -1130,14 +1138,14 @@
         </a>
       </div>
       <div class="process-right reveal-right" id="vtab-gallery">
-        <img class="process-img-slide active" data-index="0" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200" alt="Analiza">
-        <img class="process-img-slide" data-index="1" src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?q=80&w=1200" alt="Strategia">
-        <img class="process-img-slide" data-index="2" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200" alt="Wdrożenie">
-        <img class="process-img-slide" data-index="3" src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=1200" alt="Optymalizacja">
+        <img class="process-img-slide active" data-index="0" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200" alt="Analiza kampanii" loading="lazy">
+        <img class="process-img-slide" data-index="1" src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?q=80&w=1200" alt="Strategia marketingowa" loading="lazy">
+        <img class="process-img-slide" data-index="2" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200" alt="Wdrożenie kampanii" loading="lazy">
+        <img class="process-img-slide" data-index="3" src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=1200" alt="Optymalizacja wyników" loading="lazy">
         <div class="process-img-overlay"></div>
         <div class="process-img-nav">
-          <button class="process-nav-btn" id="vtab-prev"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <button class="process-nav-btn" id="vtab-next"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="process-nav-btn" id="vtab-prev" aria-label="Poprzedni krok"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="process-nav-btn" id="vtab-next" aria-label="Następny krok"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
       </div>
     </div>
@@ -1197,11 +1205,11 @@
         <p style="color:#5b3f45;font-size:1rem;">Wszystko, co warto wiedzieć przed rozmową ze mną.</p>
       </div>
       <div class="faq-list">
-        <div class="faq-item reveal-left"><button class="faq-question" onclick="toggleFaq(this)">W czym dokładnie możesz mi pomóc? <span class="faq-icon">+</span></button><div class="faq-answer">Prowadzę kampanie Google Ads i Meta Ads, projektuję strony nastawione na konwersję oraz robię audyty kont reklamowych. Jeśli masz reklamy które nie przynoszą efektu albo chcesz zacząć od zera — napisz, zobaczę czy i jak mogę pomóc.</div></div>
-        <div class="faq-item reveal-left d1"><button class="faq-question" onclick="toggleFaq(this)">Ile czasu mija do pierwszych wyników? <span class="faq-icon">+</span></button><div class="faq-answer">To zależy od punktu startowego. Przy kampaniach od zera — pierwsze dane masz w ciągu 7–14 dni, sensowne wnioski po ok. 30. Przy optymalizacji istniejących kont bywa szybciej. Nie obiecuję cudów w tydzień, bo to byłoby kłamstwo.</div></div>
-        <div class="faq-item reveal-left d2"><button class="faq-question" onclick="toggleFaq(this)">Jaki minimalny budżet reklamowy muszę mieć? <span class="faq-icon">+</span></button><div class="faq-answer">Minimalny budżet to ok. 2 000–3 000 zł miesięcznie na samą reklamę. Poniżej tej kwoty algorytmy nie mają co optymalizować i wyniki są losowe. Jeśli masz mniej — powiem Ci wprost, że lepiej poczekać.</div></div>
-        <div class="faq-item reveal-left d3"><button class="faq-question" onclick="toggleFaq(this)">Czy można rozwiązać umowę w każdej chwili? <span class="faq-icon">+</span></button><div class="faq-answer">Tak. Pracuję bez długoterminowych umów — miesięczny okres wypowiedzenia. Zależy mi na tym, żebyś zostawał dlatego że wyniki są dobre, nie dlatego że podpisałeś papier na rok.</div></div>
-        <div class="faq-item reveal-left d4"><button class="faq-question" onclick="toggleFaq(this)">Jak wygląda start współpracy? <span class="faq-icon">+</span></button><div class="faq-answer">Wypełnij formularz kontaktowy. Odpiszę i umówimy bezpłatną 30-minutową rozmowę — chcę zrozumieć Twój biznes zanim zaproponuję cokolwiek. Jeśli nie będę w stanie pomóc, powiem to wprost.</div></div>
+        <div class="faq-item reveal-left"><button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">W czym dokładnie możesz mi pomóc? <span class="faq-icon">+</span></button><div class="faq-answer">Prowadzę kampanie Google Ads i Meta Ads, projektuję strony nastawione na konwersję oraz robię audyty kont reklamowych. Jeśli masz reklamy które nie przynoszą efektu albo chcesz zacząć od zera — napisz, zobaczę czy i jak mogę pomóc.</div></div>
+        <div class="faq-item reveal-left d1"><button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">Ile czasu mija do pierwszych wyników? <span class="faq-icon">+</span></button><div class="faq-answer">To zależy od punktu startowego. Przy kampaniach od zera — pierwsze dane masz w ciągu 7–14 dni, sensowne wnioski po ok. 30. Przy optymalizacji istniejących kont bywa szybciej. Nie obiecuję cudów w tydzień, bo to byłoby kłamstwo.</div></div>
+        <div class="faq-item reveal-left d2"><button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">Jaki minimalny budżet reklamowy muszę mieć? <span class="faq-icon">+</span></button><div class="faq-answer">Minimalny budżet to ok. 2 000–3 000 zł miesięcznie na samą reklamę. Poniżej tej kwoty algorytmy nie mają co optymalizować i wyniki są losowe. Jeśli masz mniej — powiem Ci wprost, że lepiej poczekać.</div></div>
+        <div class="faq-item reveal-left d3"><button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">Czy można rozwiązać umowę w każdej chwili? <span class="faq-icon">+</span></button><div class="faq-answer">Tak. Pracuję bez długoterminowych umów — miesięczny okres wypowiedzenia. Zależy mi na tym, żebyś zostawał dlatego że wyniki są dobre, nie dlatego że podpisałeś papier na rok.</div></div>
+        <div class="faq-item reveal-left d4"><button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">Jak wygląda start współpracy? <span class="faq-icon">+</span></button><div class="faq-answer">Wypełnij formularz kontaktowy. Odpiszę i umówimy bezpłatną 30-minutową rozmowę — chcę zrozumieć Twój biznes zanim zaproponuję cokolwiek. Jeśli nie będę w stanie pomóc, powiem to wprost.</div></div>
       </div>
       <div style="display:flex;justify-content:center;margin-top:2.5rem;" class="reveal">
         <a href="#contact" class="btn-primary">Umów bezpłatną konsultację <span class="material-symbols-outlined" style="font-size:18px;">arrow_forward</span></a>
