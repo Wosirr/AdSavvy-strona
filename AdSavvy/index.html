@@ -1415,24 +1415,42 @@
       goTo(0);
     })();
 
-    // Contact form
+    // Contact form — Web3Forms
     (function() {
       const form = document.getElementById('contact-form');
       const success = document.getElementById('contact-success');
       if (!form) return;
-      form.addEventListener('submit', async (e) => {
+      form.addEventListener('submit', async function(e) {
         e.preventDefault();
         const btn = document.getElementById('cf-submit');
         btn.disabled = true; btn.style.opacity = '0.6';
+
+        const data = {
+          access_key: '700ee498-94f3-40a6-ac1b-5f9147f8decd',
+          subject: 'Zapytanie ze strony AdSavvy',
+          from_name: document.getElementById('cf-name').value,
+          email: document.getElementById('cf-email').value,
+          'Firma / Budżet': document.getElementById('cf-company').value,
+          message: document.getElementById('cf-message').value,
+        };
+
         try {
-          await fetch('https://formspree.io/f/your-form-id', {
+          const res = await fetch('https://api.web3forms.com/submit', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify(Object.fromEntries(new FormData(form)))
+            body: JSON.stringify(data),
           });
-        } catch(err) {}
-        form.style.display = 'none';
-        if (success) success.style.display = 'flex';
+          const json = await res.json();
+          if (json.success) {
+            form.style.display = 'none';
+            if (success) success.style.display = 'flex';
+          } else {
+            throw new Error(json.message);
+          }
+        } catch(err) {
+          btn.disabled = false; btn.style.opacity = '1';
+          alert('Błąd wysyłania. Napisz bezpośrednio na kontakt@adsavvy.pl');
+        }
       });
     })();
   </script>
