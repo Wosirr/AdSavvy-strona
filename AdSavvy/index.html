@@ -620,32 +620,65 @@
   @keyframes loaderFadeIn { to { opacity: 1; } }
   @keyframes lineGrow { to { width: 100%; } }
 
-  /* Hero reveal — gradient mask sweep od góry */
-  @property --rp {
-    syntax: '<percentage>';
-    inherits: false;
-    initial-value: -30%;
-  }
-  .hero-reveal {
-    -webkit-mask-image: linear-gradient(to bottom, black var(--rp), transparent calc(var(--rp) + 60px));
-    mask-image: linear-gradient(to bottom, black var(--rp), transparent calc(var(--rp) + 60px));
-    transition: --rp 1.3s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .hero-reveal.in { --rp: 120%; }
+  /* .hero-reveal — marker klasy, animacja przez JS rAF */
 </style>
 
 <script>
   (function() {
+    var SOFT   = 70;   // px — szerokość miękkiej strefy gradientu
+    var DUR    = 1250; // ms — czas animacji jednego elementu
+    var STAGGER = 160; // ms — odstęp między elementami
+    var BASE   = 800;  // ms — opóźnienie po starcie chowania loadera
+
+    function setMask(el, pos) {
+      var m = 'linear-gradient(to bottom, black ' + pos + 'px, transparent ' + (pos + SOFT) + 'px)';
+      el.style.webkitMaskImage = m;
+      el.style.maskImage = m;
+    }
+
+    function hideEl(el) {
+      var h = el.getBoundingClientRect().height || 80;
+      setMask(el, -(h + SOFT + 4)); // przesuń granicę powyżej elementu
+    }
+
+    function easeOut(t) {
+      return 1 - Math.pow(1 - t, 3); // cubic ease-out
+    }
+
+    function revealEl(el, delay) {
+      var h = el.getBoundingClientRect().height || 80;
+      var from = -(h + SOFT + 4);
+      var to   = h + 4;
+
+      setTimeout(function() {
+        var t0 = null;
+        requestAnimationFrame(function frame(ts) {
+          if (!t0) t0 = ts;
+          var t = Math.min((ts - t0) / DUR, 1);
+          setMask(el, from + easeOut(t) * (to - from));
+          if (t < 1) {
+            requestAnimationFrame(frame);
+          } else {
+            el.style.webkitMaskImage = '';
+            el.style.maskImage = '';
+          }
+        });
+      }, delay);
+    }
+
     function hideLoader() {
       var loader = document.getElementById('page-loader');
       if (!loader) return;
+
+      // Ukryj wszystkie hero elementy zanim loader zniknie
+      var items = document.querySelectorAll('.hero-reveal');
+      items.forEach(hideEl);
+
       loader.classList.add('hide');
 
-      // Wszystkie elementy hero wchodzą razem po zniknięciu loadera,
-      // z subtelnym staggerem (80ms) żeby nie było mechanicznie
-      var items = document.querySelectorAll('.hero-reveal');
+      // Odsłaniaj po kolei z staggerem
       items.forEach(function(el, i) {
-        setTimeout(function() { el.classList.add('in'); }, 750 + i * 160);
+        revealEl(el, BASE + i * STAGGER);
       });
 
       setTimeout(function() { loader.remove(); }, 900);
