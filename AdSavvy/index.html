@@ -623,34 +623,85 @@
   /* Page content reveal — hero elements wchodzą po kolei */
   .hero-reveal {
     opacity: 0;
-    transform: translateY(18px);
-    transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+    transform: translateY(16px);
+    transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1);
   }
-  .hero-reveal.in {
-    opacity: 1;
-    transform: translateY(0);
+  .hero-reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* Typewriter cursor */
+  .tw-cursor {
+    display: inline-block;
+    width: 3px; height: 0.8em;
+    background: #b80057;
+    border-radius: 2px;
+    margin-left: 4px;
+    vertical-align: middle;
+    animation: twBlink 0.65s step-end infinite;
+    transition: opacity 0.4s;
   }
+  .tw-cursor.done { animation: none; opacity: 0; }
+  @keyframes twBlink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
 </style>
 
 <script>
   (function() {
+    var TEXT1 = 'Wydajesz na reklamy.';
+    var TEXT2 = 'Ja pilnuję żebyś na tym zarabiał.';
+    var SPEED = 42; // ms na znak
+
+    function type(el, text, done) {
+      var i = 0;
+      (function tick() {
+        if (i < text.length) {
+          el.textContent += text[i++];
+          setTimeout(tick, SPEED);
+        } else if (done) {
+          done();
+        }
+      })();
+    }
+
+    function fadeIn(el, delay) {
+      setTimeout(function() { el.classList.add('in'); }, delay);
+    }
+
+    function startHero() {
+      var pill    = document.querySelector('.hero-pill');
+      var line1   = document.getElementById('tw-line1');
+      var line2   = document.getElementById('tw-line2');
+      var cursor  = document.getElementById('tw-cursor');
+      var sub     = document.querySelector('.hero-sub');
+      var actions = document.querySelector('.hero-actions');
+      var note    = document.querySelector('.hero-sub-note');
+
+      // 1. Pill wchodzi od razu
+      pill.classList.add('in');
+
+      // 2. Po chwili zacznij pisać h1
+      setTimeout(function() {
+        type(line1, TEXT1, function() {
+          // krótka pauza między linijkami
+          setTimeout(function() {
+            type(line2, TEXT2, function() {
+              // kursor znika, potem reszta wchodzi
+              setTimeout(function() { cursor.classList.add('done'); }, 400);
+              fadeIn(sub,     500);
+              fadeIn(actions, 800);
+              fadeIn(note,    1050);
+            });
+          }, 260);
+        });
+      }, 300);
+    }
+
     function hideLoader() {
       var loader = document.getElementById('page-loader');
       if (!loader) return;
       loader.classList.add('hide');
-
-      // Po zakończeniu fade loadera (700ms) wchodź elementami hero po kolei
-      var items = document.querySelectorAll('.hero-reveal');
-      var baseDelay = 800; // start po zanikaniu loadera
-      var step = 160;      // odstęp między wierszami
-      items.forEach(function(el, i) {
-        setTimeout(function() {
-          el.classList.add('in');
-        }, baseDelay + i * step);
-      });
-
+      setTimeout(startHero, 700); // poczekaj aż loader zniknie
       setTimeout(function() { loader.remove(); }, 900);
     }
+
     var dismissed = false;
     function dismiss() {
       if (dismissed) return;
@@ -658,9 +709,7 @@
       hideLoader();
     }
     setTimeout(dismiss, 1800);
-    window.addEventListener('load', function() {
-      setTimeout(dismiss, 400);
-    });
+    window.addEventListener('load', function() { setTimeout(dismiss, 400); });
   })();
 </script>
 
@@ -728,8 +777,8 @@
         <span class="material-symbols-outlined" style="font-size:16px;">bolt</span>
         Performance Marketing Agency
       </div>
-      <h1 class="hero-h1 hero-reveal">
-        Wydajesz na reklamy.<br><em>Ja pilnuję żebyś na tym zarabiał.</em>
+      <h1 class="hero-h1" style="min-height:2.4em;">
+        <span id="tw-line1"></span><br><em id="tw-line2"></em><span class="tw-cursor" id="tw-cursor"></span>
       </h1>
       <p class="hero-sub hero-reveal">
         Google Ads i Meta Ads dla małych firm i e-commerce w Polsce. Piszesz do mnie — nie do konsultanta, nie do bota.
