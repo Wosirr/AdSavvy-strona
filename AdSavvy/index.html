@@ -178,7 +178,22 @@
 
     @media (prefers-reduced-motion: reduce) {
       .orb { animation: none !important; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
     }
+
+    /* Focus visible — keyboard navigation */
+    :focus-visible {
+      outline: 2px solid #b80057;
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    .btn-primary:focus-visible,
+    .btn-secondary:focus-visible {
+      outline-offset: 4px;
+      border-radius: 9999px;
+    }
+    .nav-links a:focus-visible,
+    .nav-mobile a:focus-visible { border-radius: 4px; }
 
     /* ── ALL CONTENT LAYERS ON TOP OF AURORA ── */
     nav, section, footer, .nav-mobile { position: relative; z-index: 1; }
@@ -347,7 +362,7 @@
 
     /* Stat cards */
     .stat-card {
-      background: #fff; border-radius: 1.25rem;
+      background: #fefafb; border-radius: 1.25rem;
       padding: 2rem; text-align: center;
       border: 1px solid rgba(0,0,0,0.07);
       box-shadow: var(--shadow-sm);
@@ -359,7 +374,7 @@
 
     /* Service cards */
     .service-card {
-      background: #fff;
+      background: #fefafb;
       border: 1px solid rgba(0,0,0,0.07);
       border-radius: 1.5rem; padding: 3rem;
       transition: transform 0.3s var(--ease), box-shadow 0.3s, border-color 0.3s;
@@ -381,7 +396,7 @@
 
     /* Platform cards */
     .platform-card {
-      background: #fff; border: 1px solid rgba(0,0,0,0.07);
+      background: #fefafb; border: 1px solid rgba(0,0,0,0.07);
       border-radius: 1.25rem; padding: 2rem;
       transition: border-color 0.3s var(--ease), transform 0.3s var(--ease), box-shadow 0.3s;
       box-shadow: var(--shadow-sm);
@@ -469,6 +484,7 @@
     .why-row {
       display: flex; align-items: flex-start; gap: 2rem;
       padding: 2rem 0; border-bottom: 1px solid rgba(0,0,0,0.08);
+      transition: background 0.2s;
     }
     .why-num {
       font-size: 0.65rem; font-weight: 700; color: rgba(0,0,0,0.25);
@@ -508,8 +524,7 @@
     /* Testimonial */
     .testimonial-card {
       max-width: 800px; margin: 0 auto; padding: 3rem 3.5rem;
-      background: rgba(255,255,255,0.8); backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,0.7); border-radius: 2rem;
+      background: #fefafb; border: 1px solid rgba(0,0,0,0.08); border-radius: 2rem;
       position: relative; box-shadow: 0 8px 40px rgba(0,0,0,0.06);
     }
     .testimonial-quote { position: absolute; top: -0.5rem; left: 3rem; font-size: 5rem; line-height: 1; color: #b80057; opacity: 0.15; font-family: Georgia, serif; }
@@ -1006,7 +1021,7 @@
   </section>
 
   <!-- RESULTS -->
-  <section id="results" style="padding:5rem 2rem;background:#fff;border-top:1px solid rgba(0,0,0,0.06);border-bottom:1px solid rgba(0,0,0,0.06);">
+  <section id="results" style="padding:5rem 2rem;background:#fefafb;border-top:1px solid rgba(0,0,0,0.06);border-bottom:1px solid rgba(0,0,0,0.06);">
     <div style="max-width:1100px;margin:0 auto;">
       <div style="display:grid;grid-template-columns:1fr;gap:3rem;align-items:center;" class="results-main-grid">
 
@@ -1571,8 +1586,14 @@
     function toggleFaq(btn) {
       const item = btn.closest('.faq-item');
       const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
     }
 
 
