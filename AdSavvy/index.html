@@ -1006,7 +1006,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 15%;
+      object-position: center 38%;
     }
     .about-photo-panel::after {
       content: '';
@@ -1014,14 +1014,19 @@
       inset: 0;
       pointer-events: none;
       z-index: 1;
-      background: linear-gradient(180deg, #0c0d0f 0%, transparent 22%, transparent 78%, #0c0d0f 100%);
+      background:
+        linear-gradient(180deg, #0c0d0f 0%, transparent 18%, transparent 72%, #0c0d0f 100%),
+        linear-gradient(90deg, #0c0d0f 0%, transparent 30%);
     }
     @media (min-width: 900px) {
       .about-cinematic { grid-template-columns: 1fr 1fr; min-height: 720px; }
       .about-text-panel { padding: 6rem 4rem; }
       .about-photo-panel { min-height: unset; order: unset; }
       .about-photo-panel::after {
-        background: linear-gradient(105deg, #0c0d0f 0%, rgba(12,13,15,0.75) 20%, transparent 52%);
+        background:
+          linear-gradient(105deg, #0c0d0f 0%, rgba(12,13,15,0.8) 18%, transparent 48%),
+          linear-gradient(to right, transparent 55%, rgba(12,13,15,0.7) 80%, #0c0d0f 100%),
+          linear-gradient(to bottom, #0c0d0f 0%, transparent 12%, transparent 82%, #0c0d0f 100%);
       }
     }
   </style>
