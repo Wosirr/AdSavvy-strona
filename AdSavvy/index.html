@@ -465,24 +465,45 @@
     }
     .process-nav-btn:hover { background: #fff; }
 
-    /* Why cards */
-    .why-card {
-      background: #fff; border: 1px solid rgba(0,0,0,0.07); border-radius: 1.25rem;
-      padding: 2rem; display: flex; flex-direction: column; gap: 1rem;
-      transition: border-color 0.3s var(--ease), transform 0.3s var(--ease), box-shadow 0.3s;
-      box-shadow: var(--shadow-sm);
+    /* Why — numerowana lista */
+    .why-row {
+      display: flex; align-items: flex-start; gap: 2rem;
+      padding: 2rem 0; border-bottom: 1px solid rgba(0,0,0,0.08);
     }
-    .why-card:hover { border-color: #b80057; transform: translateY(-3px); box-shadow: 0 12px 40px rgba(184,0,87,0.08); }
-    .why-icon { width: 48px; height: 48px; border-radius: 0.875rem; display: flex; align-items: center; justify-content: center; }
-    .why-icon.pink { background: rgba(184,0,87,0.08); color: #b80057; }
-    .why-icon.teal { background: rgba(0,106,106,0.08); color: #006a6a; }
-    .why-icon.navy { background: rgba(80,96,204,0.08); color: #5060cc; }
-    .why-card h3 { font-size: 1.05rem; font-weight: 700; color: #191c1d; letter-spacing: -0.01em; }
-    .why-card p { font-size: 0.9375rem; color: #5b3f45; line-height: 1.7; flex: 1; }
-    .why-badge { display: inline-flex; font-size: 0.72rem; font-weight: 700; padding: 0.3rem 0.85rem; border-radius: 9999px; margin-top: auto; width: fit-content; }
+    .why-num {
+      font-size: 0.65rem; font-weight: 700; color: rgba(0,0,0,0.25);
+      letter-spacing: 0.08em; min-width: 2rem; padding-top: 0.35rem;
+      font-variant-numeric: tabular-nums;
+    }
+    .why-body { flex: 1; }
+    .why-title { font-size: 1.05rem; font-weight: 700; color: #191c1d; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
+    .why-text { font-size: 0.9375rem; color: #5b3f45; line-height: 1.7; max-width: 55ch; }
+    .why-badge { display: inline-flex; font-size: 0.72rem; font-weight: 700; padding: 0.3rem 0.85rem; border-radius: 9999px; flex-shrink: 0; align-self: center; }
     .why-badge.pink { background: rgba(184,0,87,0.08); color: #b80057; }
     .why-badge.teal { background: rgba(0,106,106,0.08); color: #006a6a; }
-    .why-badge.navy { background: rgba(80,96,204,0.08); color: #5060cc; }
+    @media (max-width: 640px) {
+      .why-row { flex-wrap: wrap; gap: 0.75rem; }
+      .why-badge { margin-top: 0.5rem; }
+    }
+
+    /* Platform — lista z dividerami */
+    .pf-list-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+    }
+    .pf-list-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1.75rem 1.5rem 1.75rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      border-right: 1px solid rgba(0,0,0,0.08);
+    }
+    .pf-list-item:nth-child(even) { padding-left: 1.5rem; border-right: none; }
+    .pf-list-item:nth-last-child(-n+2) { border-bottom: none; }
+    @media (max-width: 640px) {
+      .pf-list-grid { grid-template-columns: 1fr; }
+      .pf-list-item { border-right: none; padding-left: 0; }
+      .pf-list-item:nth-last-child(-n+2) { border-bottom: 1px solid rgba(0,0,0,0.08); }
+      .pf-list-item:last-child { border-bottom: none; }
+    }
 
     /* Testimonial */
     .testimonial-card {
@@ -1210,41 +1231,56 @@
   </script>
 
   <!-- PLATFORMS -->
-  <section id="platforms" style="padding:6rem 2rem;">
-    <div style="max-width:1280px;margin:0 auto;">
-      <div style="text-align:center;margin-bottom:3.5rem;">
-        <h2 style="font-size:clamp(1.75rem,3.5vw,3rem);font-weight:700;letter-spacing:-0.03em;line-height:1.2;" class="reveal d1">Działamy tam, gdzie<br>są <span style="color:#006a6a;">Twoi klienci.</span></h2>
+  <section id="platforms" style="padding:5rem 2rem 6rem;">
+    <div style="max-width:1100px;margin:0 auto;">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:3rem;" class="reveal">
+        <h2 style="font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:700;letter-spacing:-0.03em;line-height:1.15;color:#191c1d;">Działamy tam,<br>gdzie są <span style="color:#006a6a;">Twoi klienci.</span></h2>
+        <p style="font-size:0.9rem;color:#5b3f45;max-width:280px;line-height:1.6;">Każda platforma dobrana do celu kampanii i profilu klienta.</p>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;">
-        <div class="platform-card reveal-scale">
-          <div class="platform-tag social">Paid Social</div>
-          <div class="platform-name">Meta Ads</div>
-          <div class="platform-desc">Kampanie na Facebook i Instagram z precyzyjnym targetowaniem, retargetingiem i optymalizacją konwersji w lejku.</div>
-        </div>
-        <div class="platform-card reveal-scale d1">
-          <div class="platform-tag search">Search</div>
-          <div class="platform-name">Google Ads</div>
-          <div class="platform-desc">Reklamy search, Performance Max i display docierające do użytkowników z wysoką intencją zakupową w odpowiednim momencie.</div>
-        </div>
-        <div class="platform-card reveal-scale d2">
-          <div class="platform-tag social">Paid Social</div>
-          <div class="platform-name">TikTok Ads</div>
-          <div class="platform-desc">Natywne kampanie wideo docierające do młodszych grup odbiorców z wysokim zasięgiem i niskim kosztem dotarcia.</div>
-        </div>
-        <div class="platform-card reveal-scale d1">
-          <div class="platform-tag ecom">E-Commerce</div>
-          <div class="platform-name">Shopify / WooCommerce</div>
-          <div class="platform-desc">Pełna obsługa kampanii produktowych, integracja z feed'ami i optymalizacja konwersji dla sklepów internetowych.</div>
-        </div>
-        <div class="platform-card reveal-scale d2">
-          <div class="platform-tag arbitrage">Arbitrage</div>
-          <div class="platform-name">Search Arbitrage</div>
-          <div class="platform-desc">Programatyczne strategie arbitrażu na sieci Yahoo, Bing i partnerów — zamieniamy tani ruch w przewidywalne przychody.</div>
-        </div>
-        <div class="platform-card reveal-scale d3">
-          <div class="platform-tag search">Analytics</div>
-          <div class="platform-name">Tracking &amp; Analytics</div>
-          <div class="platform-desc">Konfiguracja GA4, Meta Pixel, event tracking i modeli atrybucji — pełna widoczność danych, zero zgadywania.</div>
+      <div style="border-top:1px solid rgba(0,0,0,0.08);" class="reveal d1">
+        <div class="pf-list-grid">
+          <div class="pf-list-item">
+            <span class="platform-tag social">Paid Social</span>
+            <div>
+              <div class="platform-name">Meta Ads</div>
+              <div class="platform-desc">Facebook i Instagram — retargeting, lookalike, optymalizacja konwersji w lejku.</div>
+            </div>
+          </div>
+          <div class="pf-list-item">
+            <span class="platform-tag search">Search</span>
+            <div>
+              <div class="platform-name">Google Ads</div>
+              <div class="platform-desc">Search, Performance Max i display — użytkownicy z wysoką intencją zakupową.</div>
+            </div>
+          </div>
+          <div class="pf-list-item">
+            <span class="platform-tag social">Paid Social</span>
+            <div>
+              <div class="platform-name">TikTok Ads</div>
+              <div class="platform-desc">Natywne kampanie wideo, młodsze grupy odbiorców, niski koszt dotarcia.</div>
+            </div>
+          </div>
+          <div class="pf-list-item">
+            <span class="platform-tag ecom">E-Commerce</span>
+            <div>
+              <div class="platform-name">Shopify / WooCommerce</div>
+              <div class="platform-desc">Kampanie produktowe, feed integracja, optymalizacja konwersji dla sklepów.</div>
+            </div>
+          </div>
+          <div class="pf-list-item">
+            <span class="platform-tag arbitrage">Arbitrage</span>
+            <div>
+              <div class="platform-name">Search Arbitrage</div>
+              <div class="platform-desc">Yahoo, Bing i partnerzy — przewidywalne przychody z taniego ruchu.</div>
+            </div>
+          </div>
+          <div class="pf-list-item">
+            <span class="platform-tag search">Analytics</span>
+            <div>
+              <div class="platform-name">Tracking &amp; Analytics</div>
+              <div class="platform-desc">GA4, Meta Pixel, event tracking, modele atrybucji. Zero zgadywania.</div>
+            </div>
+          </div>
         </div>
       </div>
       <div style="display:flex;justify-content:center;margin-top:2.5rem;" class="reveal">
@@ -1318,35 +1354,41 @@
   </style>
 
   <!-- WHY US -->
-  <section id="why-us" style="padding:6rem 2rem;">
-    <div style="max-width:1200px;margin:0 auto;">
-      <div style="margin-bottom:3rem;">
-        <h2 style="font-size:clamp(1.75rem,3vw,2.5rem);font-weight:700;letter-spacing:-0.03em;color:#191c1d;line-height:1.2;" class="reveal d1">Czego <span style="color:#b80057;">nie dostaniesz</span><br>w dużej agencji.</h2>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;">
-        <div class="why-card reveal">
-          <div class="why-icon pink"><span class="material-symbols-outlined">favorite</span></div>
-          <h3>Zaczynam od Twojego biznesu</h3>
-          <p>Nie wdrażam gotowego szablonu. Przed każdą kampanią rozmawiam z klientem — chcę wiedzieć co sprzedajesz, komu i dlaczego kupują. Dopiero potem buduję strategię.</p>
+  <section id="why-us" style="padding:6rem 2rem 5rem;">
+    <div style="max-width:1100px;margin:0 auto;">
+      <h2 style="font-size:clamp(1.75rem,3vw,2.5rem);font-weight:700;letter-spacing:-0.03em;color:#191c1d;line-height:1.2;margin-bottom:3rem;" class="reveal">Czego <span style="color:#b80057;">nie dostaniesz</span><br>w dużej agencji.</h2>
+      <div style="border-top:1px solid rgba(0,0,0,0.08);">
+        <div class="why-row reveal">
+          <span class="why-num">01</span>
+          <div class="why-body">
+            <h3 class="why-title">Zaczynam od Twojego biznesu</h3>
+            <p class="why-text">Nie wdrażam gotowego szablonu. Przed każdą kampanią rozmawiam z klientem — chcę wiedzieć co sprzedajesz, komu i dlaczego kupują. Dopiero potem buduję strategię.</p>
+          </div>
           <span class="why-badge pink">Zero szablonów</span>
         </div>
-        <div class="why-card reveal d1">
-          <div class="why-icon teal"><span class="material-symbols-outlined">schedule</span></div>
-          <h3>Nie ruszam z budżetem bez sensu</h3>
-          <p>Jeśli warunki nie są gotowe — powiem Ci o tym wprost, zanim wydasz złotówkę. Wolę stracić klienta niż przepalić jego pieniądze na kampanię, która nie ma prawa działać.</p>
+        <div class="why-row reveal">
+          <span class="why-num">02</span>
+          <div class="why-body">
+            <h3 class="why-title">Nie ruszam z budżetem bez sensu</h3>
+            <p class="why-text">Jeśli warunki nie są gotowe — powiem Ci o tym wprost, zanim wydasz złotówkę. Wolę stracić klienta niż przepalić jego pieniądze na kampanię, która nie ma prawa działać.</p>
+          </div>
           <span class="why-badge teal">Szczerość przed sprzedażą</span>
         </div>
-        <div class="why-card reveal d2">
-          <div class="why-icon navy"><span class="material-symbols-outlined">forum</span></div>
-          <h3>Piszesz do mnie, nie do bota</h3>
-          <p>Jestem jednoosobową agencją. To znaczy, że gdy piszesz — odpisuję ja. Nie junior, nie asystent. Decyzje zapadają szybko, bez gry w głuchy telefon.</p>
-          <span class="why-badge navy">Bezpośredni kontakt</span>
+        <div class="why-row reveal">
+          <span class="why-num">03</span>
+          <div class="why-body">
+            <h3 class="why-title">Piszesz do mnie, nie do bota</h3>
+            <p class="why-text">Jestem jednoosobową agencją. To znaczy, że gdy piszesz — odpisuję ja. Nie junior, nie asystent. Decyzje zapadają szybko, bez gry w głuchy telefon.</p>
+          </div>
+          <span class="why-badge pink">Bezpośredni kontakt</span>
         </div>
-        <div class="why-card reveal d3">
-          <div class="why-icon pink"><span class="material-symbols-outlined">trending_up</span></div>
-          <h3>Widzisz każdą złotówkę</h3>
-          <p>Dostajesz dostęp do panelu w czasie rzeczywistym. Pokazuję co działam i dlaczego — nie czekasz do comiesięcznego raportu.</p>
-          <span class="why-badge pink">Pełny wgląd na żywo</span>
+        <div class="why-row reveal">
+          <span class="why-num">04</span>
+          <div class="why-body">
+            <h3 class="why-title">Widzisz każdą złotówkę</h3>
+            <p class="why-text">Dostajesz dostęp do panelu w czasie rzeczywistym. Pokazuję co działam i dlaczego — nie czekasz do comiesięcznego raportu.</p>
+          </div>
+          <span class="why-badge teal">Pełny wgląd na żywo</span>
         </div>
       </div>
       <div style="display:flex;justify-content:center;margin-top:2.5rem;" class="reveal">
